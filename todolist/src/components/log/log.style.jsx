@@ -4,7 +4,7 @@ const LogStyle = styled.section`
   position: absolute;
   width: 452px;
   height: 1024px;
-  left: 988px;
+  right: 0px;
   top: 0px;
 
   background: #ffffff;
