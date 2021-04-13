@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StaticCardStyle = styled.div`
   display: flex;
@@ -39,6 +39,10 @@ const StaticCardStyle = styled.div`
 
     border: 1px solid #0075de;
   }
+
+  &:hover {
+    transform: scale(0.97)
+    
 `;
 
 export default StaticCardStyle;

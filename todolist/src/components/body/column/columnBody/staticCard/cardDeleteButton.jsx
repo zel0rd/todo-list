@@ -11,6 +11,11 @@ const CardDeleteBtn = styled(cardDeleteBtn)`
   path {
     fill: #828282;
   }
+
+  &:hover {
+    path {
+      fill: #FF4343;
+    }
 `;
 
 const CardDeleteButton = () => {

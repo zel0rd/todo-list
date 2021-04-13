@@ -21,24 +21,24 @@ const Body = () => {
     }
   };
 
-  const postLogData = (id) => {
+  const postLogData = (id, newCards) => {
     const logUrl = `http://localhost:3002/log/`;
     let data = {
-      "user": user,
-      "columnTitle": "완료한 일",
-      "cardTitle": "카드 제목",
-      "action": "수정",
-      "time": new Date()
-    }
-    postData(logUrl, data)
-  }
+      user: user,
+      columnTitle: columnData[id - 1].columnTitle,
+      cardTitle: newCards[0].cardTitle,
+      action: "추가",
+      time: new Date(),
+    };
+    postData(logUrl, data);
+  };
 
   const postCardData = ({ target: { id } }) => {
     const url = `http://localhost:3002/column/${id}`;
     let newCards = [...columnData[id - 1].cards];
     newCards.unshift(card);
     patchData(url, { cards: newCards });
-    postLogData(id);
+    postLogData(id, newCards);
     getColumnData();
   };
 
