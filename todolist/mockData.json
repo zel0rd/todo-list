@@ -58,6 +58,34 @@
           "cardContents": "merge공부\npush공부\npull공부"
         }
       ]
+    },
+    {
+      "columnTitle": "새 컬럼",
+      "cards": [
+        {
+          "cardTitle": "adfaf",
+          "cardContents": "asdfasdffads"
+        },
+        {
+          "cardTitle": "git공부",
+          "cardContents": "merge공부\npush공부\npull공부"
+        }
+      ],
+      "id": 4
+    },
+    {
+      "columnTitle": "새 컬럼",
+      "cards": [
+        {
+          "cardTitle": "adfaf",
+          "cardContents": "asdfasdffads"
+        },
+        {
+          "cardTitle": "git공부",
+          "cardContents": "merge공부\npush공부\npull공부"
+        }
+      ],
+      "id": 5
     }
   ],
   "log": [
