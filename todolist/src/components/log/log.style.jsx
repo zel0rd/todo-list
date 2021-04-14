@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const LogStyle = styled.section`
+const LogStyle = styled.div`
   position: absolute;
-  width: 452px;
-  height: 1024px;
+  width: 30%;
+  height:80%;
   right: 0px;
   top: 0px;
 
