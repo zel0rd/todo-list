@@ -5,6 +5,7 @@ const ButtonNormal = styled.button`
   justify-content: center;
   align-items: center;
   padding: 10px;
+  margin: 0px 3px;
 
   width: 134px;
   height: 40px;
