@@ -14,7 +14,7 @@ const StaticCardStyle = styled.div`
   box-shadow: 0px 1px 30px rgba(224, 224, 224, 0.3);
   border-radius: 6px;
 
-  &.activer {
+  &.active {
     background: #ffffff;
 
     border: 1px solid #0075de;

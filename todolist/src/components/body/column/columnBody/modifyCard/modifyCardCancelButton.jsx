@@ -1,16 +1,16 @@
 import React from "react";
 import {
-  ButtonAccent,
-  ButtonAccentText,
-} from "../../../../style/button-accent.jsx";
+  ButtonNormal,
+  ButtonNormalText,
+} from "../../../../style/button-normal.jsx";
 
 const ModifyCardCancelButton = () => {
   return (
-    <ButtonAccent className="modify-card-cancel-button-section">
-      <ButtonAccentText className="modify-card-cancel-button">
+    <ButtonNormal className="modify-card-cancel-button-section">
+      <ButtonNormalText className="modify-card-cancel-button">
         취소
-      </ButtonAccentText>
-    </ButtonAccent>
+      </ButtonNormalText>
+    </ButtonNormal>
   );
 };
 

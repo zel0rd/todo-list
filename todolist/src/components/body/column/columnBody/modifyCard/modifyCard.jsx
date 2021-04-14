@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import InputTitle from "./inputTitle.jsx";
-import InputContents from "./inputContents.jsx";
-import ModifyCardCancelButton from "./modifyCardCancelButton.jsx";
-import RegistButton from "./registButton.jsx";
-import { postData } from "../../../../../utils/axios.js";
+import React, { useState } from 'react';
+import InputTitle from './inputTitle.jsx';
+import InputContents from './inputContents.jsx';
+import ModifyCardCancelButton from './modifyCardCancelButton.jsx';
+import RegisterButton from './registerButton.jsx';
+import { postData } from '../../../../../utils/axios.js';
 
 const ModifyCard = () => {
   const [buttonFlag, setButtonFlag] = useState(true);
@@ -24,7 +24,7 @@ const ModifyCard = () => {
       <InputTitle handleButtonFlag={handleButtonFlag} />
       <InputContents handleButtonFlag={handleButtonFlag} />
       <ModifyCardCancelButton />
-      <RegistButton postCardData={postCardData} buttonFlag={buttonFlag} />
+      <RegisterButton postCardData={postCardData} buttonFlag={buttonFlag} />
     </div>
   );
 };
