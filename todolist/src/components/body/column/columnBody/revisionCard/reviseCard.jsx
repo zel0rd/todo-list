@@ -7,27 +7,18 @@ import { getData } from '../../../../../utils/axios.js';
 import ReviseButtonStyle from './buttons.style';
 import ReviseCardStyle from './reviseCard.style';
 
-const ReviseCard = ({ cardTitle, cardContents, id, callback }) => {
-  const [buttonFlag, setButtonFlag] = useState(true);
-
-  const handleButtonFlag = ({ target: { value } }) => {
-    setButtonFlag(false);
+const ReviseCard = ({ props }) => {
+  const cancelRevision = () => {
+    props.handleReviseFlag(false);
   };
-
-  async function getCardData() {
-    const url = `http://localhost:3002/column?id=${2}`;
-    const foo = await getData(url);
-    console.log(foo);
-    // console.log(target.parentNode.parentNode.parentNode);
-  }
 
   return (
     <ReviseCardStyle>
-      <RevisingTitle cardTitle={cardTitle} handleButtonFlag={handleButtonFlag} />
-      <RevisingContents cardContents={cardContents} handleButtonFlag={handleButtonFlag} />
+      <RevisingTitle cardTitle={props.cardTitle} />
+      <RevisingContents cardContents={props.cardContents} />
       <ReviseButtonStyle>
-        <ReviseCancelButton callback={getCardData} />
-        <ReviseButton />
+        <ReviseCancelButton callback={cancelRevision} />
+        <ReviseButton id={props.id} cardTitle={props.cardTitle} cardContents={props.cardContents} />
       </ReviseButtonStyle>
     </ReviseCardStyle>
   );

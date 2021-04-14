@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from "react";
-import ColumnHeader from "./column/columnHeader/columnHeader.jsx";
-import ColumnBody from "./column/columnBody/columnBody.jsx";
-import FabButton from "./fabButton/fabButton.jsx";
-import DeleteModal from "./column/columnBody/deleteModal/deleteModal.jsx";
-import {
-  getData,
-  patchData,
-  postData,
-  getRandomUser,
-} from "../../utils/axios.js";
-import BodyStyle from "./body.style";
-import CardSectionStyle from "./cardSection.style";
+import React, { useState, useEffect } from 'react';
+import ColumnHeader from './column/columnHeader/columnHeader.jsx';
+import ColumnBody from './column/columnBody/columnBody.jsx';
+import FabButton from './fabButton/fabButton.jsx';
+import DeleteModal from './column/columnBody/deleteModal/deleteModal.jsx';
+import { getData, patchData, postData, getRandomUser } from '../../utils/axios.js';
+import BodyStyle from './body.style';
+import CardSectionStyle from './cardSection.style';
 
 const Body = () => {
   const [columnData, setColumnData] = useState([]);
@@ -20,7 +15,7 @@ const Body = () => {
   const [card, setCard] = useState({});
 
   const handleModalFlag = () => {
-    console.log("clicked!");
+    console.log('clicked!');
     modalFlag === false ? setModalFlag(true) : setModalFlag(false);
   };
 
@@ -38,7 +33,7 @@ const Body = () => {
       user: user,
       columnTitle: columnData[id - 1].columnTitle,
       cardTitle: newCards[0].cardTitle,
-      action: "추가",
+      action: '추가',
       time: new Date(),
     };
     postData(logUrl, data);
@@ -62,7 +57,7 @@ const Body = () => {
 
   const handleAddButtonClick = ({ target: { id } }) => {
     let newData = columnData;
-    newData.forEach((v) => {
+    newData.forEach(v => {
       if (v.id === Number(id)) {
         if (v.modifyCardFlag === true) {
           v.modifyCardFlag = false;
@@ -75,15 +70,15 @@ const Body = () => {
   };
 
   const getColumnData = () => {
-    getData("http://localhost:3002/column").then((response) => {
+    getData('http://localhost:3002/column').then(response => {
       const newData = response.data;
-      newData.map((columnData) => (columnData.modifyCardFlag = false));
+      newData.map(columnData => (columnData.modifyCardFlag = false));
       setColumnData(newData);
     });
   };
 
   const getUser = () => {
-    getRandomUser("http://localhost:3002/defaultUserList") //
+    getRandomUser('http://localhost:3002/defaultUserList') //
       .then(setUser);
   };
 
@@ -99,26 +94,8 @@ const Body = () => {
     <CardSectionStyle className="body">
       {columnData.map(({ columnTitle, cards, modifyCardFlag, id }, index) => (
         <BodyStyle className="column" key={index}>
-          <ColumnHeader
-            id={id}
-            columnTitle={columnTitle}
-            cards={cards}
-            handleAddButtonClick={handleAddButtonClick}
-          />
-          <ColumnBody
-            id={id}
-            handleModalFlag={handleModalFlag}
-            modifyCardFlag={modifyCardFlag}
-            columnTitle={columnTitle}
-            cards={cards}
-            user={user}
-            postCardData={postCardData}
-            buttonFlag={buttonFlag}
-            handleAddButtonClick={handleAddButtonClick}
-            handleButtonFlag={handleButtonFlag}
-            handleChangeTItle={handleChangeTItle}
-            handleChangeContents={handleChangeContents}
-          />
+          <ColumnHeader id={id} columnTitle={columnTitle} cards={cards} handleAddButtonClick={handleAddButtonClick} />
+          <ColumnBody id={id} handleModalFlag={handleModalFlag} modifyCardFlag={modifyCardFlag} columnTitle={columnTitle} cards={cards} user={user} postCardData={postCardData} buttonFlag={buttonFlag} handleAddButtonClick={handleAddButtonClick} handleButtonFlag={handleButtonFlag} handleChangeTItle={handleChangeTItle} handleChangeContents={handleChangeContents} />
         </BodyStyle>
       ))}
       <FabButton />
