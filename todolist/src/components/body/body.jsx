@@ -2,16 +2,27 @@ import React, { useState, useEffect } from "react";
 import ColumnHeader from "./column/columnHeader/columnHeader.jsx";
 import ColumnBody from "./column/columnBody/columnBody.jsx";
 import FabButton from "./fabButton/fabButton.jsx";
-import { getData, getRandomUser } from "../../utils/axios.js";
+import DeleteModal from "./column/columnBody/deleteModal/deleteModal.jsx";
+import {
+  getData,
+  patchData,
+  postData,
+  getRandomUser,
+} from "../../utils/axios.js";
 import BodyStyle from "./body.style";
 import CardSectionStyle from "./cardSection.style";
-import { patchData, postData } from "../../utils/axios.js";
 
 const Body = () => {
   const [columnData, setColumnData] = useState([]);
   const [user, setUser] = useState([]);
   const [buttonFlag, setButtonFlag] = useState(true);
+  const [modalFlag, setModalFlag] = useState(false);
   const [card, setCard] = useState({});
+
+  const handleModalFlag = () => {
+    console.log("clicked!");
+    modalFlag === false ? setModalFlag(true) : setModalFlag(false);
+  };
 
   const handleButtonFlag = ({ target: { value } }) => {
     if (value.length > 0) {
@@ -21,24 +32,24 @@ const Body = () => {
     }
   };
 
-  const postLogData = (id) => {
+  const postLogData = (id, newCards) => {
     const logUrl = `http://localhost:3002/log/`;
     let data = {
-      "user": user,
-      "columnTitle": "완료한 일",
-      "cardTitle": "카드 제목",
-      "action": "수정",
-      "time": new Date()
-    }
-    postData(logUrl, data)
-  }
+      user: user,
+      columnTitle: columnData[id - 1].columnTitle,
+      cardTitle: newCards[0].cardTitle,
+      action: "추가",
+      time: new Date(),
+    };
+    postData(logUrl, data);
+  };
 
   const postCardData = ({ target: { id } }) => {
     const url = `http://localhost:3002/column/${id}`;
     let newCards = [...columnData[id - 1].cards];
     newCards.unshift(card);
     patchData(url, { cards: newCards });
-    postLogData(id);
+    postLogData(id, newCards);
     getColumnData();
   };
 
@@ -81,6 +92,9 @@ const Body = () => {
     getUser();
   }, []);
 
+  let deleteModal;
+  modalFlag === true ? (deleteModal = <DeleteModal />) : (deleteModal = null);
+
   return (
     <CardSectionStyle className="body">
       {columnData.map(({ columnTitle, cards, modifyCardFlag, id }, index) => (
@@ -93,6 +107,7 @@ const Body = () => {
           />
           <ColumnBody
             id={id}
+            handleModalFlag={handleModalFlag}
             modifyCardFlag={modifyCardFlag}
             columnTitle={columnTitle}
             cards={cards}
@@ -107,6 +122,7 @@ const Body = () => {
         </BodyStyle>
       ))}
       <FabButton />
+      {deleteModal}
     </CardSectionStyle>
   );
 };

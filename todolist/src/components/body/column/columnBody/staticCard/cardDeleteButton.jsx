@@ -11,10 +11,15 @@ const CardDeleteBtn = styled(cardDeleteBtn)`
   path {
     fill: #828282;
   }
+
+  &:hover {
+    path {
+      fill: #FF4343;
+    }
 `;
 
-const CardDeleteButton = () => {
-  return <CardDeleteBtn className="card-delete-button" />;
+const CardDeleteButton = ({ handleModalFlag }) => {
+  return <CardDeleteBtn onClick={handleModalFlag} />;
 };
 
 export default CardDeleteButton;

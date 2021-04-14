@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
+import {
+  ButtonAccent,
+  ButtonAccentText,
+} from "../../../../style/button-accent.jsx";
 
 const DeleteModalDeleteButton = () => {
-	return (
-		<div className="delete-modal-delete-button-secton">
-			<button className="delete-modal-delete-button">삭제</button>
-		</div>
-	)
+  return (
+    <ButtonAccent>
+      <ButtonAccentText>삭제</ButtonAccentText>
+    </ButtonAccent>
+  );
 };
 
-export default DeleteModalDeleteButton
+export default DeleteModalDeleteButton;
