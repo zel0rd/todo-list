@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const LogStyle = styled.div`
   position: absolute;
   width: 30%;
-  height:80%;
+  height:100%;
   right: 0px;
   top: 0px;
 

@@ -27,6 +27,8 @@ const Button = styled.div`
   bottom: 5%;
   right: 5%;
 
+  z-index:1;
+
 
   background: #0075de;
   cursor: pointer;

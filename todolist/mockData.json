@@ -35,28 +35,8 @@
       "columnTitle": "하고있는 일",
       "cards": [
         {
-          "cardTitle": "asdf",
-          "cardContents": "asdfsadfs"
-        },
-        {
-          "cardTitle": "dd",
-          "cardContents": "11df"
-        },
-        {
-          "cardTitle": "aa",
-          "cardContents": "bb"
-        },
-        {
-          "cardTitle": "asdfasdf",
-          "cardContents": "sadfsaf"
-        },
-        {
-          "cardTitle": "aaaa",
-          "cardContents": "aaaaa"
-        },
-        {
-          "cardTitle": "ds",
-          "cardContents": "ds"
+          "cardTitle": "react공부",
+          "cardContents": "useState공부\nuseEffect공부\nhooks공부"
         },
         {
           "cardTitle": "react공부",
