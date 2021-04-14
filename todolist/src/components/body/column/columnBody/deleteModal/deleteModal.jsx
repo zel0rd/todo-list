@@ -2,14 +2,20 @@ import React from "react";
 import DeleteModalTitle from "./deleteModalTitle.jsx";
 import DeleteModalCancelButton from "./deleteModalCancelButton.jsx";
 import DeleteModalDeleteButton from "./deleteModalDeleteButton.jsx";
+import {
+  DeleteModalDiv,
+  DeleteModalButtonWraaper,
+} from "./deleteModal.style.jsx";
 
 const DeleteModal = () => {
   return (
-    <div className="delete-modal">
+    <DeleteModalDiv className="delete-modal">
       <DeleteModalTitle />
-      <DeleteModalCancelButton />
-      <DeleteModalDeleteButton />
-    </div>
+      <DeleteModalButtonWraaper>
+        <DeleteModalCancelButton />
+        <DeleteModalDeleteButton />
+      </DeleteModalButtonWraaper>
+    </DeleteModalDiv>
   );
 };
 

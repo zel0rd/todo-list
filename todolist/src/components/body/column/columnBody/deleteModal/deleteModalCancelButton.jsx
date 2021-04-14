@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
+import {
+  ButtonNormal,
+  ButtonNormalText,
+} from "../../../../style/button-normal.jsx";
 
 const DeleteModalCancelButton = () => {
-	return (
-		<div className="delete-modal-cancle-button-section">
-			<button className="delete-modal-cancle-button">취소</button>
-		</div>
-	)
+  return (
+    <ButtonNormal>
+      <ButtonNormalText>취소</ButtonNormalText>
+    </ButtonNormal>
+  );
 };
 
-export default DeleteModalCancelButton
+export default DeleteModalCancelButton;

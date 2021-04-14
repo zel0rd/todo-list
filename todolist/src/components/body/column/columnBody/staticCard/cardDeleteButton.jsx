@@ -18,8 +18,8 @@ const CardDeleteBtn = styled(cardDeleteBtn)`
     }
 `;
 
-const CardDeleteButton = () => {
-  return <CardDeleteBtn className="card-delete-button" />;
+const CardDeleteButton = ({ handleModalFlag }) => {
+  return <CardDeleteBtn onClick={handleModalFlag} />;
 };
 
 export default CardDeleteButton;
