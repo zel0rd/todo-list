@@ -6,15 +6,15 @@ import CardDeleteButton from "./cardDeleteButton.jsx";
 import StaticCardStyle from "./staticCard.style";
 import CardTextWrapper from "./cardTextWrapper.style";
 
-const StaticCard = ({ cardTitle, cardContents, user }) => {
+const StaticCard = (props) => {
   return (
     <StaticCardStyle className="static-card">
       <CardTextWrapper>
-        <CardTitle cardTitle={cardTitle} />
-        <CardContents cardContents={cardContents} />
-        <CardAuthor user={user} />
+        <CardTitle cardTitle={props.cardTitle} />
+        <CardContents cardContents={props.cardContents} />
+        <CardAuthor user={props.user} />
       </CardTextWrapper>
-      <CardDeleteButton />
+      <CardDeleteButton handleModalFlag={props.handleModalFlag} />
     </StaticCardStyle>
   );
 };

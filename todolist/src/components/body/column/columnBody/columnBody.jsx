@@ -1,7 +1,6 @@
 import React from "react";
 import ModifyCard from "./modifyCard/modifyCard.jsx";
 import StaticCard from "./staticCard/staticCard.jsx";
-// import DeleteModal from "./deleteModal/deleteModal.jsx";
 
 const ColumnBody = (props) => {
   let modifyCard;
@@ -16,6 +15,7 @@ const ColumnBody = (props) => {
       {props.cards.map(({ cardTitle, cardContents }, index) => (
         <StaticCard
           key={index}
+          handleModalFlag={props.handleModalFlag}
           cardTitle={cardTitle}
           cardContents={cardContents}
           user={props.user}
