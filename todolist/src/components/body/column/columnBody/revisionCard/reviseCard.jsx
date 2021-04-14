@@ -14,13 +14,10 @@ const ReviseCard = ({ cardTitle, cardContents, id, callback }) => {
     setButtonFlag(false);
   };
 
-  function getCardData(e) {
-    e.preventDefault();
-    debugger;
-    // const url = `http://localhost:3002/column?id=${id}`;
-    // const response = await getData(url);
-    // const initialData = await response.json();
-    // console.log(initialData);
+  async function getCardData() {
+    const url = `http://localhost:3002/column?id=${2}`;
+    const foo = await getData(url);
+    console.log(foo);
     // console.log(target.parentNode.parentNode.parentNode);
   }
 
@@ -29,7 +26,7 @@ const ReviseCard = ({ cardTitle, cardContents, id, callback }) => {
       <RevisingTitle cardTitle={cardTitle} handleButtonFlag={handleButtonFlag} />
       <RevisingContents cardContents={cardContents} handleButtonFlag={handleButtonFlag} />
       <ReviseButtonStyle>
-        <ReviseCancelButton onClick={getCardData} />
+        <ReviseCancelButton callback={getCardData} />
         <ReviseButton />
       </ReviseButtonStyle>
     </ReviseCardStyle>
