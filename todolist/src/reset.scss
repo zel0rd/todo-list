@@ -109,7 +109,9 @@ input {
 }
 
 button,
-div {
+div,
+input,
+textarea {
   border: none;
 
   &:focus {

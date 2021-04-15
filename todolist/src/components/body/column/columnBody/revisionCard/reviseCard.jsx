@@ -1,24 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RevisingTitle from './revisingTitle.jsx';
 import RevisingContents from './revisingContents.jsx';
 import ReviseCancelButton from './reviseCancelButton.jsx';
 import ReviseButton from './reviseButton.jsx';
-import { getData } from '../../../../../utils/axios.js';
 import ReviseButtonStyle from './buttons.style';
 import ReviseCardStyle from './reviseCard.style';
+import { getData, patchData, postData, getRandomUser } from '../../../../../utils/axios.js';
 
 const ReviseCard = ({ props }) => {
+  const [modifiedTitle, setModifiedTitle] = useState(props.cardTitle);
+  const [modifiedContents, setModifiedContents] = useState(props.cardContents);
+
+  const updateTitle = ({ target }) => {
+    setModifiedTitle(target.value);
+  };
+
+  const updateContents = ({ target }) => {
+    setModifiedContents(target.value);
+  };
+
   const cancelRevision = () => {
     props.handleReviseFlag(false);
   };
 
+  const postModifiedData = async () => {
+    const url = `http://localhost:3002/column?id=${props.id}`;
+    const response = await getData(url);
+    const arrResponse = response.data[0].cards;
+    const modifiedData = arrResponse.map(card => {
+      if (card.cardTitle === modifiedTitle) {
+        card.cardContents = modifiedContents;
+      }
+      return card;
+    });
+
+    let data = {
+      // columnTitle: 'bye',
+      cards: modifiedData,
+      // id: 2,
+    };
+  };
+
   return (
     <ReviseCardStyle>
-      <RevisingTitle cardTitle={props.cardTitle} />
-      <RevisingContents cardContents={props.cardContents} />
+      <RevisingTitle callback={updateTitle} cardTitle={props.cardTitle} />
+      <RevisingContents callback={updateContents} cardContents={props.cardContents} />
       <ReviseButtonStyle>
         <ReviseCancelButton callback={cancelRevision} />
-        <ReviseButton id={props.id} cardTitle={props.cardTitle} cardContents={props.cardContents} />
+        <ReviseButton id={props.id} cardTitle={props.cardTitle} cardContents={props.cardContents} modifiedTitle={modifiedTitle} modifiedContents={modifiedContents} postModifiedData={postModifiedData} />
       </ReviseButtonStyle>
     </ReviseCardStyle>
   );

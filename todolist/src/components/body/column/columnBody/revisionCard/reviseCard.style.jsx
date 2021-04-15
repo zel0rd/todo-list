@@ -1,12 +1,7 @@
 import styled from 'styled-components';
 
 const ReviseCardStyle = styled.div`
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 23px;
-
-  color: #010101;
-
+  width: 308px;
   height: auto;
 
   input,
@@ -17,6 +12,8 @@ const ReviseCardStyle = styled.div`
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+    font-family: Noto Sans KR;
+    font-style: normal;
   }
 `;
 
