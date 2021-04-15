@@ -71,7 +71,7 @@ const StaticCard = (props) => {
         cardContents={props.cardContents}
         user={props.user}
         id={props.id}
-        cardID={props.cardID}
+        cardid={props.cardid}
         handleReviseFlag={handleReviseFlag}
         handleDeleteButtonFlag={handleDeleteButtonFlag}
         getColumnData={props.getColumnData}

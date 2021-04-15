@@ -12,11 +12,21 @@ import {
 import { InitialBodyRenderDiv, BodyStyle } from "./body.style";
 import CardSectionStyle from "./cardSection.style";
 
-const Body = ({ modalFlag, handleModalFlag }) => {
+const Body = () => {
   const [columnData, setColumnData] = useState([]);
   const [user, setUser] = useState([]);
   const [buttonFlag, setButtonFlag] = useState(true);
   const [card, setCard] = useState({});
+  const [deleteCardStatus, setDeleteCardStatus] = useState({});
+  const [modalFlag, setModalFlag] = useState(false);
+
+  const handleModalFlag = () => {
+    if (modalFlag === false) {
+      setModalFlag(true);
+    } else {
+      setModalFlag(false);
+    }
+  };
 
   const handleButtonFlag = ({ target: { value } }) => {
     if (value.length > 0) {
@@ -51,14 +61,21 @@ const Body = ({ modalFlag, handleModalFlag }) => {
   };
 
   const deleteCardData = ({ target: { parentNode } }) => {
-    const url = `http://localhost:3002/column/${parentNode.id}`;
-    const newCards = [...columnData[parentNode.id - 1].cards];
-    deleteLogData({
-      id: parentNode.id,
+    setDeleteCardStatus({
+      columnid: parentNode.id,
       cardid: parentNode.className,
+    });
+  };
+
+  const handleModalDeleteButton = () => {
+    const url = `http://localhost:3002/column/${deleteCardStatus.columnid}`;
+    const newCards = [...columnData[deleteCardStatus.columnid - 1].cards];
+    deleteLogData({
+      id: deleteCardStatus.columnid,
+      cardid: deleteCardStatus.cardid,
       newCards: newCards,
     });
-    newCards.splice(parentNode.className, 1);
+    newCards.splice(deleteCardStatus.cardid, 1);
     patchData(url, { cards: newCards });
     getColumnData();
   };
@@ -98,9 +115,10 @@ const Body = ({ modalFlag, handleModalFlag }) => {
       const newData = response.data;
       newData.map((columnData) => {
         columnData.modifyCardFlag = false;
-        columnData.cards.map((card, index) => (card.cardid = index));
+        if (columnData.cards.length !== 0) {
+          columnData.cards.map((card, index) => (card.cardid = index));
+        }
       });
-      console.log(newData);
       setColumnData(newData);
     });
   };
@@ -121,6 +139,7 @@ const Body = ({ modalFlag, handleModalFlag }) => {
         <DeleteModal
           columnData={columnData}
           handleModalFlag={handleModalFlag}
+          handleModalDeleteButton={handleModalDeleteButton}
         />
       ))
     : (deleteModal = null);

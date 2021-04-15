@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { ReactComponent as menuBtn } from './showLogButton.svg';
+import React from "react";
+import styled from "styled-components";
+import { ReactComponent as menuBtn } from "./showLogButton.svg";
 
 const MenuBtn = styled(menuBtn)`
   /* position: absolute; */
@@ -10,17 +10,16 @@ const MenuBtn = styled(menuBtn)`
   right: 100px;
   cursor: pointer;
 
-
   position: fixed !important;
-  transition: all 0.6s ease-in-out; 
+  transition: all 0.6s ease-in-out;
   bottom: 5%;
   right: 5%;
 `;
 
-const ShowLogButton = ({renderLoghandler} ) => {
+const ShowLogButton = ({ handleLogRender }) => {
   return (
     <div className="show-log-button-section">
-      <MenuBtn className="show-log-button" onClick={renderLoghandler} />
+      <MenuBtn className="show-log-button" onClick={handleLogRender} />
     </div>
   );
 };
