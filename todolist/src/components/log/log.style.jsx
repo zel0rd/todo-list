@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
 const LogStyle = styled.div`
-  position: absolute;
+  /* position: absolute; */
   width: 30%;
   height:100%;
   right: 0px;
   top: 0px;
+
+  position: fixed !important;
+  transition: all 0.6s ease-in-out; 
+  /* bottom: 5%; */
+  right: 0;
 
   background: #ffffff;
 
