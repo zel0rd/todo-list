@@ -11,7 +11,7 @@ const ColumnBody = props => {
     <>
       {modifyCard}
       {props.cards.map(({ cardTitle, cardContents }, index) => (
-        <StaticCard key={index} handleModalFlag={props.handleModalFlag} cardTitle={cardTitle} cardContents={cardContents} user={props.user} id={props.id} />
+        <StaticCard key={index} handleModalFlag={props.handleModalFlag} cardTitle={cardTitle} cardContents={cardContents} user={props.user} id={props.id} getColumnData={props.getColumnData} />
       ))}
     </>
   );

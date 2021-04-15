@@ -95,7 +95,7 @@ const Body = () => {
       {columnData.map(({ columnTitle, cards, modifyCardFlag, id }, index) => (
         <BodyStyle className="column" key={index}>
           <ColumnHeader id={id} columnTitle={columnTitle} cards={cards} handleAddButtonClick={handleAddButtonClick} />
-          <ColumnBody id={id} handleModalFlag={handleModalFlag} modifyCardFlag={modifyCardFlag} columnTitle={columnTitle} cards={cards} user={user} postCardData={postCardData} buttonFlag={buttonFlag} handleAddButtonClick={handleAddButtonClick} handleButtonFlag={handleButtonFlag} handleChangeTItle={handleChangeTItle} handleChangeContents={handleChangeContents} />
+          <ColumnBody id={id} handleModalFlag={handleModalFlag} modifyCardFlag={modifyCardFlag} columnTitle={columnTitle} cards={cards} user={user} postCardData={postCardData} buttonFlag={buttonFlag} handleAddButtonClick={handleAddButtonClick} handleButtonFlag={handleButtonFlag} handleChangeTItle={handleChangeTItle} handleChangeContents={handleChangeContents} getColumnData={getColumnData} />
         </BodyStyle>
       ))}
       <FabButton />

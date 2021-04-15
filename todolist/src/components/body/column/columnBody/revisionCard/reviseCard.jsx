@@ -5,7 +5,7 @@ import ReviseCancelButton from './reviseCancelButton.jsx';
 import ReviseButton from './reviseButton.jsx';
 import ReviseButtonStyle from './buttons.style';
 import ReviseCardStyle from './reviseCard.style';
-import { getData, patchData, postData, getRandomUser } from '../../../../../utils/axios.js';
+import { getData, patchData } from '../../../../../utils/axios.js';
 
 const ReviseCard = ({ props }) => {
   const [modifiedTitle, setModifiedTitle] = useState(props.cardTitle);
@@ -24,9 +24,10 @@ const ReviseCard = ({ props }) => {
   };
 
   const postModifiedData = async () => {
-    const url = `http://localhost:3002/column?id=${props.id}`;
+    const url = `http://localhost:3002/column/${props.id}`;
     const response = await getData(url);
-    const arrResponse = response.data[0].cards;
+
+    const arrResponse = response.data.cards;
     const modifiedData = arrResponse.map(card => {
       if (card.cardTitle === modifiedTitle) {
         card.cardContents = modifiedContents;
@@ -39,6 +40,9 @@ const ReviseCard = ({ props }) => {
       cards: modifiedData,
       // id: 2,
     };
+
+    patchData(url, data);
+    props.getColumnData();
   };
 
   return (

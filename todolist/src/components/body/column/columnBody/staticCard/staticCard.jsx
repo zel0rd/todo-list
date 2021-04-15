@@ -39,7 +39,7 @@ const StaticCard = props => {
       }}
       className="static-card"
     >
-      <InnerCard cardTitle={props.cardTitle} cardContents={props.cardContents} user={props.user} id={props.id} handleReviseFlag={handleReviseFlag} />
+      <InnerCard cardTitle={props.cardTitle} cardContents={props.cardContents} user={props.user} id={props.id} handleReviseFlag={handleReviseFlag} getColumnData={props.getColumnData} />
     </StaticCardStyle>
   );
 };
