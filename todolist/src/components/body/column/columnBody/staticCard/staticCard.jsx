@@ -19,21 +19,7 @@ const StaticCard = props => {
     setmodifying(flag);
   };
 
-  const defaultCard = (
-    <>
-      <CardTextWrapper>
-        <CardTitle cardTitle={props.cardTitle} />
-        <CardContents cardContents={props.cardContents} />
-        <CardAuthor user={props.user} />
-      </CardTextWrapper>
-              <CardDeleteButton
-          handleDeleteButtonFlag={handleDeleteButtonFlag}
-          handleModalFlag={props.handleModalFlag}
-        />
-    </>
-  );
 
-  
   const handleDeleteButtonFlag = () => {
     if (deleteButtonFlag) {
       setDeleteButtonFlag(false);
@@ -49,6 +35,22 @@ const StaticCard = props => {
       });
     }
   };
+
+  const defaultCard = (
+    <>
+      <CardTextWrapper>
+        <CardTitle cardTitle={props.cardTitle} />
+        <CardContents cardContents={props.cardContents} />
+        <CardAuthor user={props.user} />
+      </CardTextWrapper>
+              <CardDeleteButton
+          handleDeleteButtonFlag={handleDeleteButtonFlag}
+          handleModalFlag={props.handleModalFlag}
+        />
+    </>
+  );
+
+  
   
   const InnerCard = props => {
     if (modifying) {

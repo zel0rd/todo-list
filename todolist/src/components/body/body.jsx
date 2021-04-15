@@ -130,7 +130,7 @@ const Body = ({ modalFlag, handleModalFlag }) => {
           </BodyStyle>
         ))
       )}
-      <FabButton />
+      <FabButton getColumnData={getColumnData}/>
       {deleteModal}
     </CardSectionStyle>
   );
