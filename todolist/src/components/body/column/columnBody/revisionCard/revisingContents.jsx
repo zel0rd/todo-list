@@ -5,8 +5,9 @@ const RevisingContents = props => {
   return (
     <div className="input-contents-section">
       <RevisingContentsStyle
-        onChange={e => {
+        onKeyUp={e => {
           props.updateContents(e);
+          props.handleModifiedContents(e);
         }}
         className="input-contents"
         type="text"

@@ -4,7 +4,12 @@ import ColumnHeader from './column/columnHeader/columnHeader.jsx';
 import ColumnBody from './column/columnBody/columnBody.jsx';
 import FabButton from './fabButton/fabButton.jsx';
 import DeleteModal from './column/columnBody/deleteModal/deleteModal.jsx';
-import { getData, patchData, postData, getRandomUser } from '../../utils/axios.js';
+import {
+  getData,
+  patchData,
+  postData,
+  getRandomUser,
+} from '../../utils/axios.js';
 import { InitialBodyRenderDiv, BodyStyle } from './body.style';
 import CardSectionStyle from './cardSection.style';
 
@@ -13,15 +18,6 @@ const Body = ({ modalFlag, handleModalFlag }) => {
   const [user, setUser] = useState([]);
   const [buttonFlag, setButtonFlag] = useState(true);
   const [card, setCard] = useState({});
-  const [modified, setModified] = useState(false);
-
-  const handleModifiedFlag = flag => {
-    setModified(flag);
-  };
-
-  useEffect(() => {
-    getColumnData();
-  }, [modified]);
 
   const handleButtonFlag = ({ target: { value } }) => {
     if (value.length > 0) {
@@ -63,6 +59,18 @@ const Body = ({ modalFlag, handleModalFlag }) => {
     setCard({ ...card, cardContents: value });
   };
 
+  const handleModifiedTitle = ({ target }) => {
+    console.log(target);
+    console.log(columnData);
+    // if (card.cardid === props.cardid) {
+    //   card.cardTitle = modifiedTitle;
+    //   card.cardContents = modifiedContents;
+    // }
+    // return card;
+  };
+
+  const handleModifiedContents = ({ target: { value } }) => {};
+
   const handleAddButtonClick = ({ target: { id } }) => {
     let newData = columnData;
     newData.forEach(v => {
@@ -99,7 +107,14 @@ const Body = ({ modalFlag, handleModalFlag }) => {
   }, []);
 
   let deleteModal;
-  modalFlag === true ? (deleteModal = <DeleteModal columnData={columnData} handleModalFlag={handleModalFlag} />) : (deleteModal = null);
+  modalFlag === true
+    ? (deleteModal = (
+        <DeleteModal
+          columnData={columnData}
+          handleModalFlag={handleModalFlag}
+        />
+      ))
+    : (deleteModal = null);
 
   return (
     <CardSectionStyle className="body">
@@ -110,9 +125,35 @@ const Body = ({ modalFlag, handleModalFlag }) => {
           <DragDropContext>
             <Droppable droppableId="droppable-card">
               {provided => (
-                <BodyStyle className="column" key={index} {...provided.droppableProps} ref={provided.innerRef}>
-                  <ColumnHeader id={id} columnTitle={columnTitle} cards={cards} handleAddButtonClick={handleAddButtonClick} />
-                  <ColumnBody id={id} modifyCardFlag={modifyCardFlag} columnTitle={columnTitle} cards={cards} user={user} buttonFlag={buttonFlag} patchCardData={patchCardData} handleModalFlag={handleModalFlag} handleAddButtonClick={handleAddButtonClick} handleButtonFlag={handleButtonFlag} handleChangeTItle={handleChangeTItle} handleChangeContents={handleChangeContents} getColumnData={getColumnData} handleModifiedFlag={handleModifiedFlag} />
+                <BodyStyle
+                  className="column"
+                  key={index}
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  <ColumnHeader
+                    id={id}
+                    columnTitle={columnTitle}
+                    cards={cards}
+                    handleAddButtonClick={handleAddButtonClick}
+                  />
+                  <ColumnBody
+                    id={id}
+                    modifyCardFlag={modifyCardFlag}
+                    columnTitle={columnTitle}
+                    cards={cards}
+                    user={user}
+                    buttonFlag={buttonFlag}
+                    patchCardData={patchCardData}
+                    handleModalFlag={handleModalFlag}
+                    handleAddButtonClick={handleAddButtonClick}
+                    handleButtonFlag={handleButtonFlag}
+                    handleChangeTItle={handleChangeTItle}
+                    handleChangeContents={handleChangeContents}
+                    getColumnData={getColumnData}
+                    handleModifiedTitle={handleModifiedTitle}
+                    handleModifiedContents={handleModifiedContents}
+                  />
                 </BodyStyle>
               )}
             </Droppable>

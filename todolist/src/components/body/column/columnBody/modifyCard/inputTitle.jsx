@@ -1,11 +1,11 @@
-import React from "react";
-import { InputTitleSection, InputTitleTextarea } from "./inputTitle.style.jsx";
+import React from 'react';
+import { InputTitleSection, InputTitleTextarea } from './inputTitle.style.jsx';
 
 const InputTitle = ({ handleChangeTItle, handleButtonFlag }) => {
   return (
     <InputTitleSection className="input-title-section">
       <InputTitleTextarea
-        onKeyUp={(e) => {
+        onKeyUp={e => {
           handleButtonFlag(e);
           handleChangeTItle(e);
         }}

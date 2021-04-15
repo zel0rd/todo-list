@@ -42,13 +42,30 @@ const StaticCard = props => {
         <CardContents cardContents={props.cardContents} />
         <CardAuthor user={props.user} />
       </CardTextWrapper>
-      <CardDeleteButton handleDeleteButtonFlag={handleDeleteButtonFlag} handleModalFlag={props.handleModalFlag} />
+      <CardDeleteButton
+        handleDeleteButtonFlag={handleDeleteButtonFlag}
+        handleModalFlag={props.handleModalFlag}
+      />
     </>
   );
 
   const InnerCard = props => {
     if (canceled) {
-      return <ReviseCard cardTitle={props.cardTitle} getColumnData={props.getColumnData} cardContents={props.cardContents} handleCancelFlag={props.handleCancelFlag} handleModifiedFlag={props.handleModifiedFlag} id={props.id} cardid={props.cardid} />;
+      return (
+        <ReviseCard
+          cardTitle={props.cardTitle}
+          cardContents={props.cardContents}
+          user={props.user}
+          id={props.id}
+          cardid={props.cardid}
+          handleCancelFlag={handleCancelFlag}
+          handleDeleteButtonFlag={handleDeleteButtonFlag}
+          getColumnData={props.getColumnData}
+          handleModifiedFlag={props.handleModifiedFlag}
+          handleModifiedTitle={props.handleModifiedTitle}
+          handleModifiedContents={props.handleModifiedContents}
+        />
+      );
     }
 
     return defaultCard;
@@ -62,7 +79,19 @@ const StaticCard = props => {
       }}
       className="static-card"
     >
-      <InnerCard cardTitle={props.cardTitle} cardContents={props.cardContents} user={props.user} id={props.id} cardid={props.cardid} handleCancelFlag={handleCancelFlag} handleDeleteButtonFlag={handleDeleteButtonFlag} getColumnData={props.getColumnData} handleModifiedFlag={props.handleModifiedFlag} />
+      <InnerCard
+        cardTitle={props.cardTitle}
+        cardContents={props.cardContents}
+        user={props.user}
+        id={props.id}
+        cardid={props.cardid}
+        handleCancelFlag={handleCancelFlag}
+        handleDeleteButtonFlag={handleDeleteButtonFlag}
+        getColumnData={props.getColumnData}
+        handleModifiedFlag={props.handleModifiedFlag}
+        handleModifiedTitle={props.handleModifiedTitle}
+        handleModifiedContents={props.handleModifiedContents}
+      />
     </StaticCardStyle>
   );
 };
