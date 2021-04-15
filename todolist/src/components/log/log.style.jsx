@@ -6,7 +6,7 @@ const LogStyle = styled.div`
   height:100%;
   right: 0px;
   top: 0px;
-
+  min-width: 400px;
   position: fixed !important;
   transition: all 0.6s ease-in-out; 
   /* bottom: 5%; */
