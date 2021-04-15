@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const BodyStyle = styled.div`
   display: flex;
@@ -10,4 +10,13 @@ const BodyStyle = styled.div`
   width: 308px;
 `;
 
-export default BodyStyle;
+const InitialBodyRenderDiv = styled.div`
+  position: absolute;
+  top: 45%;
+  right: 40%;
+
+  font-size: 3rem;
+  font-weight: 700;
+`;
+
+export { InitialBodyRenderDiv, BodyStyle };

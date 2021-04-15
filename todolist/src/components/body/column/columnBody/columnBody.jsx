@@ -1,6 +1,7 @@
 import React from "react";
 import ModifyCard from "./modifyCard/modifyCard.jsx";
 import StaticCard from "./staticCard/staticCard.jsx";
+import { InitialCardsRenderDiv } from "./columnBody.style.jsx";
 
 const ColumnBody = (props) => {
   let modifyCard;
@@ -12,15 +13,19 @@ const ColumnBody = (props) => {
   return (
     <>
       {modifyCard}
-      {props.cards.map(({ cardTitle, cardContents }, index) => (
-        <StaticCard
-          key={index}
-          handleModalFlag={props.handleModalFlag}
-          cardTitle={cardTitle}
-          cardContents={cardContents}
-          user={props.user}
-        />
-      ))}
+      {props.cards.length === 0 ? (
+        <InitialCardsRenderDiv>등록된 일정이 없습니다 !</InitialCardsRenderDiv>
+      ) : (
+        props.cards.map(({ cardTitle, cardContents }, index) => (
+          <StaticCard
+            key={index}
+            handleModalFlag={props.handleModalFlag}
+            cardTitle={cardTitle}
+            cardContents={cardContents}
+            user={props.user}
+          />
+        ))
+      )}
     </>
   );
 };

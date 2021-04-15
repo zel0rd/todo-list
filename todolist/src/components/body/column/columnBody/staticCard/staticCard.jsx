@@ -9,8 +9,13 @@ import ReviseCard from "../revisionCard/reviseCard";
 
 const StaticCard = (props) => {
   const [modifying, setmodifying] = useState(false);
+  const [deleteButtonFlag, setDeleteButtonFlag] = useState(false);
+  const [cardStyle, setCardStyle] = useState({
+    borderStyle: "none",
+    backgroundColor: "#fff",
+  });
 
-  const InnerCard = ({ props }) => {
+  const InnerCard = ({ handleDeleteButtonFlag }) => {
     if (modifying) {
       return (
         <ReviseCard
@@ -27,9 +32,28 @@ const StaticCard = (props) => {
           <CardContents cardContents={props.cardContents} />
           <CardAuthor user={props.user} />
         </CardTextWrapper>
-        <CardDeleteButton handleModalFlag={props.handleModalFlag} />
+        <CardDeleteButton
+          handleDeleteButtonFlag={handleDeleteButtonFlag}
+          handleModalFlag={props.handleModalFlag}
+        />
       </>
     );
+  };
+
+  const handleDeleteButtonFlag = () => {
+    if (deleteButtonFlag) {
+      setDeleteButtonFlag(false);
+      setCardStyle({
+        borderStyle: "none",
+        backgroundColor: "#fff",
+      });
+    } else {
+      setDeleteButtonFlag(true);
+      setCardStyle({
+        borderStyle: "1px solid red",
+        backgroundColor: "#ffeeec",
+      });
+    }
   };
 
   const handleReviseFlag = () => {
@@ -37,8 +61,8 @@ const StaticCard = (props) => {
   };
 
   return (
-    <StaticCardStyle onDoubleClick={handleReviseFlag} className="static-card">
-      <InnerCard props={props} />
+    <StaticCardStyle cardStyle={cardStyle} onDoubleClick={handleReviseFlag}>
+      <InnerCard handleDeleteButtonFlag={handleDeleteButtonFlag} />
     </StaticCardStyle>
   );
 };

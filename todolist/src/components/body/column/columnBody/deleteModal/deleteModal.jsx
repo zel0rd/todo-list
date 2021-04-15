@@ -7,13 +7,13 @@ import {
   DeleteModalButtonWraaper,
 } from "./deleteModal.style.jsx";
 
-const DeleteModal = () => {
+const DeleteModal = (props) => {
   return (
     <DeleteModalDiv className="delete-modal">
       <DeleteModalTitle />
       <DeleteModalButtonWraaper>
-        <DeleteModalCancelButton />
-        <DeleteModalDeleteButton />
+        <DeleteModalCancelButton handleModalFlag={props.handleModalFlag} />
+        <DeleteModalDeleteButton handleModalFlag={props.handleModalFlag} />
       </DeleteModalButtonWraaper>
     </DeleteModalDiv>
   );

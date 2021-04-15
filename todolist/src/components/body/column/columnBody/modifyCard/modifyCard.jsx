@@ -25,7 +25,7 @@ const ModifyCard = ({ props }) => {
         <RegistButton
           id={props.id}
           buttonFlag={props.buttonFlag}
-          postCardData={props.postCardData}
+          patchCardData={props.patchCardData}
         />
       </ButtonWrapper>
     </ModifyCardDiv>
