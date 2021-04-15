@@ -12,6 +12,59 @@
     "Beemo",
     "Json"
   ],
-  "column": [],
-  "log": []
+  "column": [
+    {
+      "columnTitle": "해야할 일",
+      "cards": [
+        {
+          "cardTitle": "안녕",
+          "cardContents": "하수꽝",
+          "cardid": 1
+        }
+      ],
+      "id": 1
+    }
+  ],
+  "log": [
+    {
+      "user": "Beemo",
+      "columnTitle": "해야할 일",
+      "cardTitle": "안녕",
+      "action": "추가",
+      "time": "2021-04-15T05:12:31.849Z",
+      "id": 1
+    },
+    {
+      "user": "Beemo",
+      "columnTitle": "해야할 일",
+      "cardTitle": "만나서",
+      "action": "추가",
+      "time": "2021-04-15T05:12:43.031Z",
+      "id": 2
+    },
+    {
+      "user": "DD",
+      "columnTitle": "해야할 일",
+      "cardTitle": "만나서",
+      "action": "삭제",
+      "time": "2021-04-15T06:45:35.357Z",
+      "id": 3
+    },
+    {
+      "user": "Young",
+      "columnTitle": "해야할 일",
+      "cardTitle": "영",
+      "action": "추가",
+      "time": "2021-04-15T06:47:41.182Z",
+      "id": 4
+    },
+    {
+      "user": "Young",
+      "columnTitle": "해야할 일",
+      "cardTitle": "영",
+      "action": "삭제",
+      "time": "2021-04-15T06:47:44.705Z",
+      "id": 5
+    }
+  ]
 }

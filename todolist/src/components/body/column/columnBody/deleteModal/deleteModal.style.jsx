@@ -7,7 +7,7 @@ const DeleteModalDiv = styled.div`
   align-items: flex-start;
   padding: 24px;
 
-  position: absolute;
+  position: fixed !important;
   width: 400px;
   height: 138px;
   top: 40%;

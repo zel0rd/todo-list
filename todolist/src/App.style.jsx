@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 const AppDiv = styled.div`
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
+  min-height: 100%;
+  min-width: 100%;
   font-family: "Noto Sans KR", sans-serif;
   background: ${(props) => props.backgroundColor};
 `;

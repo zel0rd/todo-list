@@ -32,10 +32,35 @@ const Body = ({ modalFlag, handleModalFlag }) => {
       user: user,
       columnTitle: columnData[id - 1].columnTitle,
       cardTitle: newCards[0].cardTitle,
-      action: '추가',
+      action: "추가",
       time: new Date(),
     };
     postData(logUrl, data);
+  };
+
+  const deleteLogData = ({ id, cardid, newCards }) => {
+    const logUrl = `http://localhost:3002/log/`;
+    let data = {
+      user: user,
+      columnTitle: columnData[id - 1].columnTitle,
+      cardTitle: newCards[cardid].cardTitle,
+      action: "삭제",
+      time: new Date(),
+    };
+    postData(logUrl, data);
+  };
+
+  const deleteCardData = ({ target: { parentNode } }) => {
+    const url = `http://localhost:3002/column/${parentNode.id}`;
+    const newCards = [...columnData[parentNode.id - 1].cards];
+    deleteLogData({
+      id: parentNode.id,
+      cardid: parentNode.className,
+      newCards: newCards,
+    });
+    newCards.splice(parentNode.className, 1);
+    patchData(url, { cards: newCards });
+    getColumnData();
   };
 
   const patchCardData = ({ target: { id } }) => {
@@ -47,10 +72,6 @@ const Body = ({ modalFlag, handleModalFlag }) => {
     getColumnData();
   };
 
-  const deleteCardData = ({ target: { id } }) => {
-    const url = `http://localhost:3002/column/${id}`;
-  };
-
   const handleChangeTItle = ({ target: { value } }) => {
     setCard({ ...card, cardTitle: value });
   };
@@ -60,7 +81,7 @@ const Body = ({ modalFlag, handleModalFlag }) => {
 
   const handleAddButtonClick = ({ target: { id } }) => {
     let newData = columnData;
-    newData.forEach(v => {
+    newData.forEach((v) => {
       if (v.id === Number(id)) {
         if (v.modifyCardFlag === true) {
           v.modifyCardFlag = false;
@@ -73,15 +94,19 @@ const Body = ({ modalFlag, handleModalFlag }) => {
   };
 
   const getColumnData = () => {
-    getData('http://localhost:3002/column').then(response => {
+    getData("http://localhost:3002/column").then((response) => {
       const newData = response.data;
-      newData.map(columnData => (columnData.modifyCardFlag = false));
+      newData.map((columnData) => {
+        columnData.modifyCardFlag = false;
+        columnData.cards.map((card, index) => (card.cardid = index));
+      });
+      console.log(newData);
       setColumnData(newData);
     });
   };
 
   const getUser = () => {
-    getRandomUser('http://localhost:3002/defaultUserList') //
+    getRandomUser("http://localhost:3002/defaultUserList") //
       .then(setUser);
   };
 
@@ -121,16 +146,18 @@ const Body = ({ modalFlag, handleModalFlag }) => {
               user={user}
               buttonFlag={buttonFlag}
               patchCardData={patchCardData}
+              deleteCardData={deleteCardData}
               handleModalFlag={handleModalFlag}
               handleAddButtonClick={handleAddButtonClick}
               handleButtonFlag={handleButtonFlag}
               handleChangeTItle={handleChangeTItle}
               handleChangeContents={handleChangeContents}
+              getColumnData={getColumnData}
             />
           </BodyStyle>
         ))
       )}
-      <FabButton />
+      <FabButton getColumnData={getColumnData} />
       {deleteModal}
     </CardSectionStyle>
   );

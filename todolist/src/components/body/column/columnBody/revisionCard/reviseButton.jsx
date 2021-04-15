@@ -1,7 +1,10 @@
-import React, { useCallback } from 'react';
-import { ButtonAccent, ButtonAccentText } from '../../../../style/button-accent.jsx';
+import React from "react";
+import {
+  ButtonAccent,
+  ButtonAccentText,
+} from "../../../../style/button-accent.jsx";
 
-const ReviseButton = props => {
+const ReviseButton = (props) => {
   return (
     <ButtonAccent
       onClick={() => {
@@ -9,7 +12,9 @@ const ReviseButton = props => {
       }}
       className="revise-card-cancel-button-section"
     >
-      <ButtonAccentText className="revise-card-cancel-button">수정</ButtonAccentText>
+      <ButtonAccentText className="revise-card-cancel-button">
+        수정
+      </ButtonAccentText>
     </ButtonAccent>
   );
 };
