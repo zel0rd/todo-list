@@ -9,7 +9,7 @@ import {
 
 const DeleteModal = (props) => {
   return (
-    <DeleteModalDiv className="delete-modal">
+    <DeleteModalDiv>
       <DeleteModalTitle />
       <DeleteModalButtonWraaper>
         <DeleteModalCancelButton handleModalFlag={props.handleModalFlag} />
