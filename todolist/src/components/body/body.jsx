@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import ColumnHeader from './column/columnHeader/columnHeader.jsx';
-import ColumnBody from './column/columnBody/columnBody.jsx';
-import FabButton from './fabButton/fabButton.jsx';
-import DeleteModal from './column/columnBody/deleteModal/deleteModal.jsx';
-import { getData, patchData, postData, getRandomUser } from '../../utils/axios.js';
-import BodyStyle from './body.style';
-import CardSectionStyle from './cardSection.style';
+import React, { useState, useEffect } from "react";
+import ColumnHeader from "./column/columnHeader/columnHeader.jsx";
+import ColumnBody from "./column/columnBody/columnBody.jsx";
+import FabButton from "./fabButton/fabButton.jsx";
+import DeleteModal from "./column/columnBody/deleteModal/deleteModal.jsx";
+import {
+  getData,
+  patchData,
+  postData,
+  getRandomUser,
+} from "../../utils/axios.js";
+import { InitialBodyRenderDiv, BodyStyle } from "./body.style";
+import CardSectionStyle from "./cardSection.style";
 
-const Body = () => {
+const Body = ({ modalFlag, handleModalFlag }) => {
   const [columnData, setColumnData] = useState([]);
   const [user, setUser] = useState([]);
   const [buttonFlag, setButtonFlag] = useState(true);
-  const [modalFlag, setModalFlag] = useState(false);
   const [card, setCard] = useState({});
-
-  const handleModalFlag = () => {
-    console.log('clicked!');
-    modalFlag === false ? setModalFlag(true) : setModalFlag(false);
-  };
 
   const handleButtonFlag = ({ target: { value } }) => {
     if (value.length > 0) {
@@ -39,13 +38,17 @@ const Body = () => {
     postData(logUrl, data);
   };
 
-  const postCardData = ({ target: { id } }) => {
+  const patchCardData = ({ target: { id } }) => {
     const url = `http://localhost:3002/column/${id}`;
     let newCards = [...columnData[id - 1].cards];
     newCards.unshift(card);
     patchData(url, { cards: newCards });
     postLogData(id, newCards);
     getColumnData();
+  };
+
+  const deleteCardData = ({ target: { id } }) => {
+    const url = `http://localhost:3002/column/${id}`;
   };
 
   const handleChangeTItle = ({ target: { value } }) => {
@@ -88,16 +91,45 @@ const Body = () => {
   }, []);
 
   let deleteModal;
-  modalFlag === true ? (deleteModal = <DeleteModal />) : (deleteModal = null);
+  modalFlag === true
+    ? (deleteModal = (
+        <DeleteModal
+          columnData={columnData}
+          handleModalFlag={handleModalFlag}
+        />
+      ))
+    : (deleteModal = null);
 
   return (
     <CardSectionStyle className="body">
-      {columnData.map(({ columnTitle, cards, modifyCardFlag, id }, index) => (
-        <BodyStyle className="column" key={index}>
-          <ColumnHeader id={id} columnTitle={columnTitle} cards={cards} handleAddButtonClick={handleAddButtonClick} />
-          <ColumnBody id={id} handleModalFlag={handleModalFlag} modifyCardFlag={modifyCardFlag} columnTitle={columnTitle} cards={cards} user={user} postCardData={postCardData} buttonFlag={buttonFlag} handleAddButtonClick={handleAddButtonClick} handleButtonFlag={handleButtonFlag} handleChangeTItle={handleChangeTItle} handleChangeContents={handleChangeContents} getColumnData={getColumnData} />
-        </BodyStyle>
-      ))}
+      {columnData.length === 0 ? (
+        <InitialBodyRenderDiv>데이터를 추가해주세요 !</InitialBodyRenderDiv>
+      ) : (
+        columnData.map(({ columnTitle, cards, modifyCardFlag, id }, index) => (
+          <BodyStyle className="column" key={index}>
+            <ColumnHeader
+              id={id}
+              columnTitle={columnTitle}
+              cards={cards}
+              handleAddButtonClick={handleAddButtonClick}
+            />
+            <ColumnBody
+              id={id}
+              modifyCardFlag={modifyCardFlag}
+              columnTitle={columnTitle}
+              cards={cards}
+              user={user}
+              buttonFlag={buttonFlag}
+              patchCardData={patchCardData}
+              handleModalFlag={handleModalFlag}
+              handleAddButtonClick={handleAddButtonClick}
+              handleButtonFlag={handleButtonFlag}
+              handleChangeTItle={handleChangeTItle}
+              handleChangeContents={handleChangeContents}
+            />
+          </BodyStyle>
+        ))
+      )}
       <FabButton />
       {deleteModal}
     </CardSectionStyle>

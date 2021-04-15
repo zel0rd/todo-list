@@ -6,10 +6,14 @@ const LogCardsStyle = styled.div`
   padding: 16px;
 
   position: relative;
-  width: 332px;
-  height: 137px;
-  left: 40px;
+  /* width: 100%; */
+  /* height: 137px; */
+  /* left: 40px; */
   top: 20px;
+  width:90%;
+  /* width: 80%;
+  height: 100%; */
+  left: 25px;
 
   background: #ffffff;
 `;

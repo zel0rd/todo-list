@@ -4,9 +4,9 @@ import {
   ButtonNormalText,
 } from "../../../../style/button-normal.jsx";
 
-const DeleteModalCancelButton = () => {
+const DeleteModalCancelButton = ({ handleModalFlag }) => {
   return (
-    <ButtonNormal>
+    <ButtonNormal onClick={handleModalFlag}>
       <ButtonNormalText>취소</ButtonNormalText>
     </ButtonNormal>
   );

@@ -1,25 +1,14 @@
 import React from "react";
-import styled from "styled-components";
-import { ReactComponent as cardDeleteBtn } from "../../../../style/deleteIcon.svg";
+import CardDeleteBtn from "./cardDeleteButton.style.jsx";
 
-const CardDeleteBtn = styled(cardDeleteBtn)`
-  width: 13.79px;
-  height: 13.79px;
-
-  cursor: pointer;
-
-  path {
-    fill: #828282;
-  }
-
-  &:hover {
-    path {
-      fill: #FF4343;
-    }
-`;
-
-const CardDeleteButton = ({ handleModalFlag }) => {
-  return <CardDeleteBtn onClick={handleModalFlag} />;
+const CardDeleteButton = ({ handleDeleteButtonFlag, handleModalFlag }) => {
+  return (
+    <CardDeleteBtn
+      onMouseEnter={handleDeleteButtonFlag}
+      onMouseLeave={handleDeleteButtonFlag}
+      onClick={handleModalFlag}
+    />
+  );
 };
 
 export default CardDeleteButton;

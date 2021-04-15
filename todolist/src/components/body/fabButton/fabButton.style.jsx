@@ -17,9 +17,18 @@ const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  bottom: 30px;
-  right: 100px;
+
+  position: fixed !important;
+  background-color: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.11);
+  transition: all 0.6s ease-in-out;
+  color: black;
+  bottom: 5%;
+  right: 5%;
+
+  z-index:1;
+
 
   background: #0075de;
   cursor: pointer;

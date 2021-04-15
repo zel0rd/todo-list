@@ -4,9 +4,13 @@ import {
   ButtonAccentText,
 } from "../../../../style/button-accent.jsx";
 
-const DeleteModalDeleteButton = () => {
+const DeleteModalDeleteButton = ({ handleModalFlag }) => {
   return (
-    <ButtonAccent>
+    <ButtonAccent
+      onClick={() => {
+        handleModalFlag();
+      }}
+    >
       <ButtonAccentText>삭제</ButtonAccentText>
     </ButtonAccent>
   );

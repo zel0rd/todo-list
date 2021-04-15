@@ -12,50 +12,6 @@
     "Beemo",
     "Json"
   ],
-  "column": [
-    {
-      "id": 1,
-      "columnTitle": "해야할 일",
-      "cards": [
-        {
-          "cardTitle": "js공부",
-          "cardContents": "this공부\nclosure공부\n재귀공부"
-        }
-      ]
-    },
-    {
-      "columnTitle": "하고있는 일",
-      "cards": [
-        {
-          "cardTitle": "ds",
-          "cardContents": "dssfdssfs"
-        },
-        {
-          "cardTitle": "react공부",
-          "cardContents": "useState공부\nuseEffect공부\nhooks공부"
-        }
-      ],
-      "id": 2
-    },
-    {
-      "id": 3,
-      "columnTitle": "완료한 일",
-      "cards": [
-        {
-          "cardTitle": "git공부",
-          "cardContents": "merge공부\npush공부\npull공부"
-        }
-      ]
-    }
-  ],
-  "log": [
-    {
-      "user": "DD",
-      "columnTitle": "하고있는 일",
-      "cardTitle": "ds",
-      "action": "추가",
-      "time": "2021-04-14T05:19:58.481Z",
-      "id": 1
-    }
-  ]
+  "column": [],
+  "log": []
 }
