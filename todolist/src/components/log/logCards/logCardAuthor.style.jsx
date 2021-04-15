@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const LogCardAuthorStyle = styled.div`
   position: static;
-  width: 244px;
+  /* width: 244px; */
 
   font-weight: normal;
   font-size: 14px;
