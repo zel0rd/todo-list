@@ -5,7 +5,6 @@ import ReviseCancelButton from './reviseCancelButton.jsx';
 import ReviseButton from './reviseButton.jsx';
 import ReviseButtonStyle from './buttons.style';
 import ReviseCardStyle from './reviseCard.style';
-import { getData, patchData } from '../../../../../utils/axios.js';
 
 const ReviseCard = props => {
   const [modifiedTitle, setModifiedTitle] = useState(props.cardTitle);
@@ -20,32 +19,13 @@ const ReviseCard = props => {
   };
 
   const cancelRevision = () => {
-    props.handleCancelFlag(false);
+    props.handleModifyFlag(false);
   };
 
-  const registerRevision = () => {
-    props.handleModifiedFlag(true);
-    props.handleCancelFlag(false);
-  };
-
-  const patchModifiedData = async () => {
-    const url = `http://localhost:3002/column/${props.id}`;
-    const response = await getData(url);
-    const arrResponse = response.data.cards;
-
-    const modifiedData = arrResponse.map(card => {
-      if (card.cardid === props.cardid) {
-        card.cardTitle = modifiedTitle;
-        card.cardContents = modifiedContents;
-      }
-      return card;
-    });
-
-    let data = {
-      cards: modifiedData,
-    };
-
-    patchData(url, data);
+  const registerRevision = e => {
+    props.handleRegisterFlag(true);
+    props.handleModifyFlag(false);
+    props.patchModifiedData(e);
   };
 
   return (
@@ -53,15 +33,16 @@ const ReviseCard = props => {
       <RevisingTitle
         updateTitle={updateTitle}
         cardTitle={props.cardTitle}
-        handleModifiedTitle={props.handleModifiedTitle}
+        handleModifiedCard={props.handleModifiedCard}
       />
       <RevisingContents
         updateContents={updateContents}
         cardContents={props.cardContents}
+        handleModifiedCard={props.handleModifiedCard}
       />
       <ReviseButtonStyle>
         <ReviseCancelButton cancelRevision={cancelRevision} />
-        <ReviseButton patchModifiedData={patchModifiedData} />
+        <ReviseButton registerRevision={registerRevision} />
       </ReviseButtonStyle>
     </ReviseCardStyle>
   );

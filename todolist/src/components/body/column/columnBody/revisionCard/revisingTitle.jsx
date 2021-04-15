@@ -7,7 +7,7 @@ const RevisingTitle = props => {
       <RevisingTitleStyle
         onKeyUp={e => {
           props.updateTitle(e);
-          props.handleModifiedTitle(e);
+          props.handleModifiedCard(e, 'title');
         }}
         className="input-title"
         type="text"

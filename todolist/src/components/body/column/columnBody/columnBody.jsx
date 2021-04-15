@@ -26,8 +26,9 @@ const ColumnBody = props => {
             id={props.id}
             cardid={cardid}
             getColumnData={props.getColumnData}
-            handleModifiedFlag={props.handleModifiedFlag}
-            handleModifiedTitle={props.handleModifiedTitle}
+            handleModifiedCard={props.handleModifiedCard}
+            getCardData={props.getCardData}
+            patchModifiedData={props.patchModifiedData}
           />
         ))
       )}

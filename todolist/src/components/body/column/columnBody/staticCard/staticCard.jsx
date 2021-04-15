@@ -8,15 +8,24 @@ import CardTextWrapper from './cardTextWrapper.style';
 import ReviseCard from '../revisionCard/reviseCard';
 
 const StaticCard = props => {
-  const [canceled, setCanceled] = useState(false);
+  const [modified, setmodified] = useState(false);
+  const [registered, setRegistered] = useState(false);
   const [deleteButtonFlag, setDeleteButtonFlag] = useState(false);
   const [cardStyle, setCardStyle] = useState({
     borderStyle: 'none',
     backgroundColor: '#fff',
   });
 
-  const handleCancelFlag = flag => {
-    setCanceled(flag);
+  const handleModifyFlag = flag => {
+    setmodified(flag);
+  };
+
+  const handleRegisterFlag = flag => {
+    setRegistered(flag);
+  };
+
+  const passProps = () => {
+    props.getCardData(props);
   };
 
   const handleDeleteButtonFlag = () => {
@@ -50,7 +59,8 @@ const StaticCard = props => {
   );
 
   const InnerCard = props => {
-    if (canceled) {
+    if (modified) {
+      console.log('hi');
       return (
         <ReviseCard
           cardTitle={props.cardTitle}
@@ -58,12 +68,12 @@ const StaticCard = props => {
           user={props.user}
           id={props.id}
           cardid={props.cardid}
-          handleCancelFlag={handleCancelFlag}
+          handleModifyFlag={handleModifyFlag}
+          handleRegisterFlag={handleRegisterFlag}
           handleDeleteButtonFlag={handleDeleteButtonFlag}
           getColumnData={props.getColumnData}
-          handleModifiedFlag={props.handleModifiedFlag}
-          handleModifiedTitle={props.handleModifiedTitle}
-          handleModifiedContents={props.handleModifiedContents}
+          handleModifiedCard={props.handleModifiedCard}
+          patchModifiedData={props.patchModifiedData}
         />
       );
     }
@@ -75,7 +85,8 @@ const StaticCard = props => {
     <StaticCardStyle
       cardStyle={cardStyle}
       onDoubleClick={() => {
-        handleCancelFlag(true);
+        handleModifyFlag(true);
+        passProps();
       }}
       className="static-card"
     >
@@ -85,12 +96,11 @@ const StaticCard = props => {
         user={props.user}
         id={props.id}
         cardid={props.cardid}
-        handleCancelFlag={handleCancelFlag}
+        handleModifyFlag={handleModifyFlag}
         handleDeleteButtonFlag={handleDeleteButtonFlag}
         getColumnData={props.getColumnData}
-        handleModifiedFlag={props.handleModifiedFlag}
-        handleModifiedTitle={props.handleModifiedTitle}
-        handleModifiedContents={props.handleModifiedContents}
+        handleModifiedCard={props.handleModifiedCard}
+        patchModifiedData={props.patchModifiedData}
       />
     </StaticCardStyle>
   );

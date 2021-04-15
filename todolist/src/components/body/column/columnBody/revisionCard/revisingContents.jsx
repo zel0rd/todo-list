@@ -7,7 +7,7 @@ const RevisingContents = props => {
       <RevisingContentsStyle
         onKeyUp={e => {
           props.updateContents(e);
-          props.handleModifiedContents(e);
+          props.handleModifiedCard(e, 'contents');
         }}
         className="input-contents"
         type="text"

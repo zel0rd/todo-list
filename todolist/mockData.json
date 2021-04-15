@@ -17,17 +17,17 @@
       "columnTitle": "해야할 일",
       "cards": [
         {
-          "cardTitle": "딩댕동d",
-          "cardContents": "아냐! 아냐어왜df",
+          "cardTitle": "딩",
+          "cardContents": "하ㅇ",
           "cardid": 0
         },
         {
-          "cardTitle": "링딩동",
-          "cardContents": "댕동",
+          "cardTitle": "링딩",
+          "cardContents": "댕ㅁㄷㄹㄷ",
           "cardid": 1
         },
         {
-          "cardTitle": "안녕",
+          "cardTitle": "안",
           "cardContents": "하수꽝",
           "cardid": 2
         }
@@ -38,8 +38,9 @@
       "columnTitle": "새 컬럼",
       "cards": [
         {
-          "cardTitle": "sk",
-          "cardContents": "sdfj"
+          "cardTitle": "시에나",
+          "cardContents": "sdfj",
+          "cardid": 0
         }
       ],
       "id": 2

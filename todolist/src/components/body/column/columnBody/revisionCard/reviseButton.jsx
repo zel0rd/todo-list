@@ -1,15 +1,20 @@
 import React from 'react';
-import { ButtonAccent, ButtonAccentText } from '../../../../style/button-accent.jsx';
+import {
+  ButtonAccent,
+  ButtonAccentText,
+} from '../../../../style/button-accent.jsx';
 
 const ReviseButton = props => {
   return (
     <ButtonAccent
-      onClick={() => {
-        props.patchModifiedData();
+      onClick={e => {
+        props.registerRevision(e);
       }}
       className="revise-card-cancel-button-section"
     >
-      <ButtonAccentText className="revise-card-cancel-button">수정</ButtonAccentText>
+      <ButtonAccentText className="revise-card-cancel-button">
+        수정
+      </ButtonAccentText>
     </ButtonAccent>
   );
 };
