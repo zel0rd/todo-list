@@ -6,7 +6,6 @@ import LogHideButton from './logHideButton.jsx';
 const LogHeader = ({handleLogRender}) => {
   return (
     <LogHeaderStyle className="log-header-section">
-      {/* <LogTitle /> */}
       <LogHideButton handleLogRender={handleLogRender} /> 
     </LogHeaderStyle>
   );

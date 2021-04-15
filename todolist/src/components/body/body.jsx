@@ -121,7 +121,7 @@ const Body = () => {
           />
         </BodyStyle>
       ))}
-      <FabButton />
+      <FabButton getColumnData={getColumnData} />
       {deleteModal}
     </CardSectionStyle>
   );
