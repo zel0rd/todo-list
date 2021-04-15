@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+const DeleteModalBackground = styled.div`
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: #939395;
+  opacity: 0.5;
+`;
+
 const DeleteModalDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,4 +52,9 @@ const DeleteModalButtonWraaper = styled.div`
   margin: 12px 0px 12px 70px;
 `;
 
-export { DeleteModalDiv, DeleteModalTitleDiv, DeleteModalButtonWraaper };
+export {
+  DeleteModalBackground,
+  DeleteModalDiv,
+  DeleteModalTitleDiv,
+  DeleteModalButtonWraaper,
+};
