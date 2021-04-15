@@ -32,7 +32,7 @@ const Body = ({ modalFlag, handleModalFlag }) => {
       user: user,
       columnTitle: columnData[id - 1].columnTitle,
       cardTitle: newCards[0].cardTitle,
-      action: "추가",
+      action: '추가',
       time: new Date(),
     };
     postData(logUrl, data);
@@ -60,7 +60,7 @@ const Body = ({ modalFlag, handleModalFlag }) => {
 
   const handleAddButtonClick = ({ target: { id } }) => {
     let newData = columnData;
-    newData.forEach((v) => {
+    newData.forEach(v => {
       if (v.id === Number(id)) {
         if (v.modifyCardFlag === true) {
           v.modifyCardFlag = false;
@@ -73,15 +73,15 @@ const Body = ({ modalFlag, handleModalFlag }) => {
   };
 
   const getColumnData = () => {
-    getData("http://localhost:3002/column").then((response) => {
+    getData('http://localhost:3002/column').then(response => {
       const newData = response.data;
-      newData.map((columnData) => (columnData.modifyCardFlag = false));
+      newData.map(columnData => (columnData.modifyCardFlag = false));
       setColumnData(newData);
     });
   };
 
   const getUser = () => {
-    getRandomUser("http://localhost:3002/defaultUserList") //
+    getRandomUser('http://localhost:3002/defaultUserList') //
       .then(setUser);
   };
 

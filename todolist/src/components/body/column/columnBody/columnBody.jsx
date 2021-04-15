@@ -3,12 +3,10 @@ import ModifyCard from "./modifyCard/modifyCard.jsx";
 import StaticCard from "./staticCard/staticCard.jsx";
 import { InitialCardsRenderDiv } from "./columnBody.style.jsx";
 
-const ColumnBody = (props) => {
+const ColumnBody = props => {
   let modifyCard;
 
-  props.modifyCardFlag
-    ? (modifyCard = <ModifyCard props={props} />)
-    : (modifyCard = null);
+  props.modifyCardFlag ? (modifyCard = <ModifyCard props={props} />) : (modifyCard = null);
 
   return (
     <>

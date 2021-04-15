@@ -2,7 +2,6 @@ import React from 'react';
 import { ButtonNormal, ButtonNormalText } from '../../../../style/button-normal.jsx';
 
 const ReviseCancelButton = props => {
-  console.log(props.callback);
   return (
     <ButtonNormal
       onClick={() => {

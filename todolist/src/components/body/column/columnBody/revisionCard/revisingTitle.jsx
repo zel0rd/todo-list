@@ -1,9 +1,17 @@
 import React from 'react';
+import RevisingTitleStyle from './revisingTitle.style';
 
-const RevisingTitle = ({ cardTitle, handleButtonFlag }) => {
+const RevisingTitle = props => {
   return (
     <div className="input-title-section">
-      <input onChange={handleButtonFlag} className="input-title" type="text" defaultValue={cardTitle}></input>
+      <RevisingTitleStyle
+        onChange={e => {
+          props.callback(e);
+        }}
+        className="input-title"
+        type="text"
+        defaultValue={props.cardTitle}
+      ></RevisingTitleStyle>
     </div>
   );
 };

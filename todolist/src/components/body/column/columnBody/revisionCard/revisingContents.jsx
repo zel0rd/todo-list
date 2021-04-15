@@ -1,9 +1,17 @@
 import React from 'react';
+import RevisingContentsStyle from './revisingContents.style';
 
-const RevisingContents = ({ cardContents, handleButtonFlag }) => {
+const RevisingContents = props => {
   return (
     <div className="input-contents-section">
-      <textarea onChange={handleButtonFlag} className="input-contents" type="text" defaultValue={cardContents}></textarea>
+      <RevisingContentsStyle
+        onChange={e => {
+          props.callback(e);
+        }}
+        className="input-contents"
+        type="text"
+        defaultValue={props.cardContents}
+      ></RevisingContentsStyle>
     </div>
   );
 };

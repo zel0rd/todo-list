@@ -1,8 +1,5 @@
-import React from "react";
-import {
-  ButtonAccent,
-  ButtonAccentText,
-} from "../../../../style/button-accent.jsx";
+import React from 'react';
+import { ButtonAccent, ButtonAccentText } from '../../../../style/button-accent.jsx';
 
 const RegistButton = ({ id, buttonFlag, patchCardData }) => {
   return (
