@@ -1,11 +1,11 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { ButtonAccent, ButtonAccentText } from '../../../../style/button-accent.jsx';
 
 const ReviseButton = props => {
   return (
     <ButtonAccent
       onClick={() => {
-        props.postModifiedData();
+        props.patchModifiedData();
       }}
       className="revise-card-cancel-button-section"
     >

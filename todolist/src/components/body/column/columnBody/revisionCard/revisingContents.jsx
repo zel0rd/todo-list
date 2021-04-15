@@ -6,7 +6,7 @@ const RevisingContents = props => {
     <div className="input-contents-section">
       <RevisingContentsStyle
         onChange={e => {
-          props.callback(e);
+          props.updateContents(e);
         }}
         className="input-contents"
         type="text"

@@ -3,12 +3,13 @@ import styled from 'styled-components';
 const LogStyle = styled.div`
   /* position: absolute; */
   width: 30%;
-  height:100%;
+  height: 100%;
   right: 0px;
   top: 0px;
+  min-width: 400px;
 
   position: fixed !important;
-  transition: all 0.6s ease-in-out; 
+  transition: all 0.6s ease-in-out;
   /* bottom: 5%; */
   right: 0;
 

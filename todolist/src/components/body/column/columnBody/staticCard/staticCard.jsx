@@ -8,15 +8,31 @@ import CardTextWrapper from './cardTextWrapper.style';
 import ReviseCard from '../revisionCard/reviseCard';
 
 const StaticCard = props => {
-  const [modifying, setmodifying] = useState(false);
+  const [canceled, setCanceled] = useState(false);
   const [deleteButtonFlag, setDeleteButtonFlag] = useState(false);
   const [cardStyle, setCardStyle] = useState({
-    borderStyle: "none",
-    backgroundColor: "#fff",
+    borderStyle: 'none',
+    backgroundColor: '#fff',
   });
 
-  const handleReviseFlag = flag => {
-    setmodifying(flag);
+  const handleCancelFlag = flag => {
+    setCanceled(flag);
+  };
+
+  const handleDeleteButtonFlag = () => {
+    if (deleteButtonFlag) {
+      setDeleteButtonFlag(false);
+      setCardStyle({
+        borderStyle: 'none',
+        backgroundColor: '#fff',
+      });
+    } else {
+      setDeleteButtonFlag(true);
+      setCardStyle({
+        borderStyle: '1px solid red',
+        backgroundColor: '#ffeeec',
+      });
+    }
   };
 
   const defaultCard = (
@@ -26,45 +42,27 @@ const StaticCard = props => {
         <CardContents cardContents={props.cardContents} />
         <CardAuthor user={props.user} />
       </CardTextWrapper>
-              <CardDeleteButton
-          handleDeleteButtonFlag={handleDeleteButtonFlag}
-          handleModalFlag={props.handleModalFlag}
-        />
+      <CardDeleteButton handleDeleteButtonFlag={handleDeleteButtonFlag} handleModalFlag={props.handleModalFlag} />
     </>
   );
 
-  
-  const handleDeleteButtonFlag = () => {
-    if (deleteButtonFlag) {
-      setDeleteButtonFlag(false);
-      setCardStyle({
-        borderStyle: "none",
-        backgroundColor: "#fff",
-      });
-    } else {
-      setDeleteButtonFlag(true);
-      setCardStyle({
-        borderStyle: "1px solid red",
-        backgroundColor: "#ffeeec",
-      });
-    }
-  };
-  
   const InnerCard = props => {
-    if (modifying) {
-      return <ReviseCard props={props} />;
+    if (canceled) {
+      return <ReviseCard cardTitle={props.cardTitle} getColumnData={props.getColumnData} cardContents={props.cardContents} handleCancelFlag={props.handleCancelFlag} handleModifiedFlag={props.handleModifiedFlag} id={props.id} cardid={props.cardid} />;
     }
+
     return defaultCard;
   };
 
   return (
-    <StaticCardStyle cardStyle={cardStyle}
+    <StaticCardStyle
+      cardStyle={cardStyle}
       onDoubleClick={() => {
-        handleReviseFlag(true);
+        handleCancelFlag(true);
       }}
       className="static-card"
     >
-      <InnerCard cardTitle={props.cardTitle} cardContents={props.cardContents} user={props.user} id={props.id} handleReviseFlag={handleReviseFlag}  handleDeleteButtonFlag={handleDeleteButtonFlag} getColumnData={props.getColumnData} />
+      <InnerCard cardTitle={props.cardTitle} cardContents={props.cardContents} user={props.user} id={props.id} cardid={props.cardid} handleCancelFlag={handleCancelFlag} handleDeleteButtonFlag={handleDeleteButtonFlag} getColumnData={props.getColumnData} handleModifiedFlag={props.handleModifiedFlag} />
     </StaticCardStyle>
   );
 };

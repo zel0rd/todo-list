@@ -1,22 +1,27 @@
-import React, { useState, useEffect } from "react";
-import ColumnHeader from "./column/columnHeader/columnHeader.jsx";
-import ColumnBody from "./column/columnBody/columnBody.jsx";
-import FabButton from "./fabButton/fabButton.jsx";
-import DeleteModal from "./column/columnBody/deleteModal/deleteModal.jsx";
-import {
-  getData,
-  patchData,
-  postData,
-  getRandomUser,
-} from "../../utils/axios.js";
-import { InitialBodyRenderDiv, BodyStyle } from "./body.style";
-import CardSectionStyle from "./cardSection.style";
+import React, { useState, useEffect } from 'react';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import ColumnHeader from './column/columnHeader/columnHeader.jsx';
+import ColumnBody from './column/columnBody/columnBody.jsx';
+import FabButton from './fabButton/fabButton.jsx';
+import DeleteModal from './column/columnBody/deleteModal/deleteModal.jsx';
+import { getData, patchData, postData, getRandomUser } from '../../utils/axios.js';
+import { InitialBodyRenderDiv, BodyStyle } from './body.style';
+import CardSectionStyle from './cardSection.style';
 
 const Body = ({ modalFlag, handleModalFlag }) => {
   const [columnData, setColumnData] = useState([]);
   const [user, setUser] = useState([]);
   const [buttonFlag, setButtonFlag] = useState(true);
   const [card, setCard] = useState({});
+  const [modified, setModified] = useState(false);
+
+  const handleModifiedFlag = flag => {
+    setModified(flag);
+  };
+
+  useEffect(() => {
+    getColumnData();
+  }, [modified]);
 
   const handleButtonFlag = ({ target: { value } }) => {
     if (value.length > 0) {
@@ -75,7 +80,10 @@ const Body = ({ modalFlag, handleModalFlag }) => {
   const getColumnData = () => {
     getData('http://localhost:3002/column').then(response => {
       const newData = response.data;
-      newData.map(columnData => (columnData.modifyCardFlag = false));
+      newData.map(columnData => {
+        columnData.modifyCardFlag = false;
+        columnData.cards.map((card, index) => (card.cardid = index));
+      });
       setColumnData(newData);
     });
   };
@@ -91,14 +99,7 @@ const Body = ({ modalFlag, handleModalFlag }) => {
   }, []);
 
   let deleteModal;
-  modalFlag === true
-    ? (deleteModal = (
-        <DeleteModal
-          columnData={columnData}
-          handleModalFlag={handleModalFlag}
-        />
-      ))
-    : (deleteModal = null);
+  modalFlag === true ? (deleteModal = <DeleteModal columnData={columnData} handleModalFlag={handleModalFlag} />) : (deleteModal = null);
 
   return (
     <CardSectionStyle className="body">
@@ -106,31 +107,19 @@ const Body = ({ modalFlag, handleModalFlag }) => {
         <InitialBodyRenderDiv>데이터를 추가해주세요 !</InitialBodyRenderDiv>
       ) : (
         columnData.map(({ columnTitle, cards, modifyCardFlag, id }, index) => (
-          <BodyStyle className="column" key={index}>
-            <ColumnHeader
-              id={id}
-              columnTitle={columnTitle}
-              cards={cards}
-              handleAddButtonClick={handleAddButtonClick}
-            />
-            <ColumnBody
-              id={id}
-              modifyCardFlag={modifyCardFlag}
-              columnTitle={columnTitle}
-              cards={cards}
-              user={user}
-              buttonFlag={buttonFlag}
-              patchCardData={patchCardData}
-              handleModalFlag={handleModalFlag}
-              handleAddButtonClick={handleAddButtonClick}
-              handleButtonFlag={handleButtonFlag}
-              handleChangeTItle={handleChangeTItle}
-              handleChangeContents={handleChangeContents}
-            />
-          </BodyStyle>
+          <DragDropContext>
+            <Droppable droppableId="droppable-card">
+              {provided => (
+                <BodyStyle className="column" key={index} {...provided.droppableProps} ref={provided.innerRef}>
+                  <ColumnHeader id={id} columnTitle={columnTitle} cards={cards} handleAddButtonClick={handleAddButtonClick} />
+                  <ColumnBody id={id} modifyCardFlag={modifyCardFlag} columnTitle={columnTitle} cards={cards} user={user} buttonFlag={buttonFlag} patchCardData={patchCardData} handleModalFlag={handleModalFlag} handleAddButtonClick={handleAddButtonClick} handleButtonFlag={handleButtonFlag} handleChangeTItle={handleChangeTItle} handleChangeContents={handleChangeContents} getColumnData={getColumnData} handleModifiedFlag={handleModifiedFlag} />
+                </BodyStyle>
+              )}
+            </Droppable>
+          </DragDropContext>
         ))
       )}
-      <FabButton />
+      <FabButton getColumnData={getColumnData} />
       {deleteModal}
     </CardSectionStyle>
   );
