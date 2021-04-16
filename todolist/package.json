@@ -21,7 +21,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "json-server": "json-server --watch db.json --port 3002"
+    "json-server": "json-server --watch db.json --port 3002",
+    "pm2-start": "pm2 start npm -- start",
+    "pm2-status": "pm2 status",
+    "pm2-json-server": "nohup npm run json-server &"
   },
   "eslintConfig": {
     "extends": [
