@@ -9,7 +9,7 @@ const card = {
 }
 
 const addNewColumnEvent = (getColumnData) =>{
-  const columnUrl = "http://localhost:3002/column/";
+  const columnUrl = "http://141.164.43.40:3002/column/";
   postData(columnUrl, card);
   getColumnData()
 }

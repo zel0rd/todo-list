@@ -27,7 +27,7 @@ const Body = () => {
     parentNode.id === ""
       ? (columnId = parentNode.parentNode.id)
       : (columnId = parentNode.id);
-    const url = `http://localhost:3002/column/${columnId}`;
+    const url = `http://141.164.43.40:3002/column/${columnId}`;
     deleteData(url);
     getColumnData();
   };
@@ -56,7 +56,7 @@ const Body = () => {
   };
 
   const patchLogData = ({ id, cardid, newCards, action }) => {
-    const logUrl = `http://localhost:3002/log/`;
+    const logUrl = `http://141.164.43.40:3002/log/`;
     let data = {
       user: user,
       columnTitle: columnData[id - 1].columnTitle,
@@ -82,7 +82,7 @@ const Body = () => {
   };
 
   const handleModalDeleteButton = () => {
-    const url = `http://localhost:3002/column/${deleteCardStatus.columnid}`;
+    const url = `http://141.164.43.40:3002/column/${deleteCardStatus.columnid}`;
     const newCards = [...columnData[deleteCardStatus.columnid - 1].cards];
     patchLogData({
       id: deleteCardStatus.columnid,
@@ -96,7 +96,7 @@ const Body = () => {
   };
 
   const patchCardData = ({ target: { id } }) => {
-    const url = `http://localhost:3002/column/${id}`;
+    const url = `http://141.164.43.40:3002/column/${id}`;
     let newCards = [...columnData[id - 1].cards];
     newCards.unshift(card);
     patchData(url, { cards: newCards });
@@ -130,7 +130,7 @@ const Body = () => {
   };
 
   const patchModifiedData = () => {
-    const url = `http://localhost:3002/column/${clickedCard.columnId}`;
+    const url = `http://141.164.43.40:3002/column/${clickedCard.columnId}`;
     let data = {
       cards: card,
     };
@@ -163,7 +163,7 @@ const Body = () => {
   };
 
   const getColumnData = () => {
-    getData("http://localhost:3002/column").then((response) => {
+    getData("http://141.164.43.40:3002/column").then((response) => {
       const newData = response.data;
       newData.map((columnData) => {
         columnData.modifyCardFlag = false;
@@ -176,7 +176,7 @@ const Body = () => {
   };
 
   const getUser = () => {
-    getRandomUser("http://localhost:3002/defaultUserList") //
+    getRandomUser("http://141.164.43.40:3002/defaultUserList") //
       .then(setUser);
   };
 

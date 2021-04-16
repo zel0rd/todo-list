@@ -8,7 +8,7 @@ const Log = ({ handleLogRender }) => {
   const [logCards, setLogCards] = useState([]);
   const reversedLogCards = logCards.reverse();
   const getLogData = () => {
-    getData("http://localhost:3002/log") //
+    getData("http://141.164.43.40:3002/log") //
       .then((res) => setLogCards(res.data));
   };
 
