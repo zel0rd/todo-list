@@ -17,12 +17,7 @@
       "columnTitle": "해야할 일",
       "cards": [
         {
-          "cardTitle": "딩f",
-          "cardContents": "하s;ㅇㄹㄴ",
-          "cardid": 0
-        },
-        {
-          "cardTitle": "링딩",
+          "cardTitle": "딩ffsdfㄴㅇㅇㄴㄹ",
           "cardContents": "댕ㅁㄷㄹㄷ",
           "cardid": 1
         },
@@ -38,63 +33,89 @@
       "columnTitle": "새 컬럼",
       "cards": [
         {
+          "cardTitle": "나는",
+          "cardContents": "나는바보"
+        },
+        {
+          "cardTitle": "좋아",
+          "cardContents": "좋아좋아",
+          "cardid": 0
+        },
+        {
+          "0": {
+            "cardTitle": "딩ff",
+            "cardContents": "a",
+            "cardid": 0
+          },
+          "1": {
+            "cardTitle": "링딩",
+            "cardContents": "댕ㅁㄷㄹㄷ",
+            "cardid": 1
+          },
+          "2": {
+            "cardTitle": "안",
+            "cardContents": "하수꽝",
+            "cardid": 2
+          },
+          "cardTitle": "안녕",
+          "cardContents": "tytyy",
+          "cardid": 1
+        },
+        {
+          "0": {
+            "cardTitle": "딩ff",
+            "cardContents": "a",
+            "cardid": 0
+          },
+          "1": {
+            "cardTitle": "링딩",
+            "cardContents": "댕ㅁㄷㄹㄷ",
+            "cardid": 1
+          },
+          "2": {
+            "cardTitle": "안",
+            "cardContents": "하수꽝",
+            "cardid": 2
+          },
+          "cardTitle": "sdf",
+          "cardContents": "dsfdsfds",
+          "cardid": 2
+        },
+        {
           "cardTitle": "시에나",
           "cardContents": "ㅎㅎㅎㅎ",
-          "cardid": 0
+          "cardid": 3
         }
       ],
       "id": 2
-    }
-  ],
-  "log": [
-    {
-      "user": "Beemo",
-      "columnTitle": "해야할 일",
-      "cardTitle": "안녕",
-      "action": "추가",
-      "time": "2021-04-15T05:12:31.849Z",
-      "id": 1
     },
     {
-      "user": "Beemo",
-      "columnTitle": "해야할 일",
-      "cardTitle": "만나서",
-      "action": "추가",
-      "time": "2021-04-15T05:12:43.031Z",
-      "id": 2
-    },
-    {
-      "user": "DD",
-      "columnTitle": "해야할 일",
-      "cardTitle": "만나서",
-      "action": "삭제",
-      "time": "2021-04-15T06:45:35.357Z",
+      "columnTitle": "새 컬럼",
+      "cards": [],
       "id": 3
     },
     {
-      "user": "Young",
-      "columnTitle": "해야할 일",
-      "cardTitle": "영",
-      "action": "추가",
-      "time": "2021-04-15T06:47:41.182Z",
+      "columnTitle": "새 컬럼",
+      "cards": [],
       "id": 4
     },
     {
-      "user": "Young",
-      "columnTitle": "해야할 일",
-      "cardTitle": "영",
-      "action": "삭제",
-      "time": "2021-04-15T06:47:44.705Z",
+      "columnTitle": "새 컬럼",
+      "cards": [],
       "id": 5
     },
     {
-      "user": "Adela",
-      "columnTitle": "해야할 일",
-      "cardTitle": "링",
-      "action": "추가",
-      "time": "2021-04-15T07:58:25.083Z",
+      "columnTitle": "새 컬럼",
+      "cards": [],
       "id": 6
     },
+    {
+      "columnTitle": "새 컬럼",
+      "cards": [],
+      "id": 7
+    }
+  ],
+  "log": [
     {
       "user": "Json",
       "columnTitle": "해야할 일",
@@ -118,6 +139,38 @@
       "action": "추가",
       "time": "2021-04-15T14:47:21.002Z",
       "id": 9
+    },
+    {
+      "user": "Swing",
+      "columnTitle": "새 컬럼",
+      "cardTitle": "sdf",
+      "action": "추가",
+      "time": "2021-04-16T04:31:22.029Z",
+      "id": 10
+    },
+    {
+      "user": "DD",
+      "columnTitle": "새 컬럼",
+      "cardTitle": "좋아",
+      "action": "수정",
+      "time": "2021-04-16T05:14:27.608Z",
+      "id": 11
+    },
+    {
+      "user": "Sienna",
+      "columnTitle": "새 컬럼",
+      "cardTitle": "나는",
+      "action": "추가",
+      "time": "2021-04-16T05:14:37.723Z",
+      "id": 12
+    },
+    {
+      "user": "Json",
+      "columnTitle": "해야할 일",
+      "cardTitle": "딩",
+      "action": "삭제",
+      "time": "2021-04-16T05:14:44.327Z",
+      "id": 13
     }
   ]
 }
