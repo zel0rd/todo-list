@@ -13,7 +13,7 @@ const BodyStyle = styled.div`
 const InitialBodyRenderDiv = styled.div`
   position: absolute;
   top: 45%;
-  right: 38%;
+  right: 40%;
 
   font-size: 3rem;
   font-weight: 700;

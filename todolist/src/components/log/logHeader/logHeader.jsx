@@ -1,11 +1,12 @@
-import React from "react";
-import LogHeaderStyle from "./logHeader.style.jsx";
-import LogHideButton from "./logHideButton.jsx";
+import React from 'react';
+import LogTitle from './logTitle.jsx';
+import LogHeaderStyle from './logHeader.style.jsx';
+import LogHideButton from './logHideButton.jsx';
 
-const LogHeader = ({ handleLogRender }) => {
+const LogHeader = ({handleLogRender}) => {
   return (
     <LogHeaderStyle className="log-header-section">
-      <LogHideButton handleLogRender={handleLogRender} />
+      <LogHideButton handleLogRender={handleLogRender} /> 
     </LogHeaderStyle>
   );
 };

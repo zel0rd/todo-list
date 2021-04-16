@@ -6,8 +6,6 @@ const InitialCardsRenderDiv = styled.div`
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 700;
-
-  margin: 10px 0px;
 `;
 
 export { InitialCardsRenderDiv };

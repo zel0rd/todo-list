@@ -20,7 +20,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "json-server": "json-server --watch db.json --port 3002"
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "json-server": "json-server --watch db.json --port 3001",
+    "test-json-server": "json-server --watch mockData.json --port 3002"
   },
   "eslintConfig": {
     "extends": [
