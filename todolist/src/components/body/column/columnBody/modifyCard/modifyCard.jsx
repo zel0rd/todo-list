@@ -10,7 +10,7 @@ const ModifyCard = ({ props }) => {
   return (
     <ModifyCardDiv className="modify-card">
       <InputTitle
-        handleChangeTItle={props.handleChangeTItle}
+        handleChangeTitle={props.handleChangeTitle}
         handleButtonFlag={props.handleButtonFlag}
       />
       <InputContents

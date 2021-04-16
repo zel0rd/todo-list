@@ -12,6 +12,22 @@
     "Beemo",
     "Json"
   ],
-  "column": [],
+  "column": [
+    {
+      "columnTitle": "해야하는 일",
+      "cards": [],
+      "id": 1
+    },
+    {
+      "columnTitle": "하고있는 일",
+      "cards": [],
+      "id": 2
+    },
+    {
+      "columnTitle": "완료한 일",
+      "cards": [],
+      "id": 3
+    }
+  ],
   "log": []
 }

@@ -5,8 +5,9 @@ const RevisingTitle = props => {
   return (
     <div className="input-title-section">
       <RevisingTitleStyle
-        onChange={e => {
-          props.callback(e);
+        onKeyUp={e => {
+          props.updateTitle(e);
+          props.handleModifiedCard(e, 'title');
         }}
         className="input-title"
         type="text"

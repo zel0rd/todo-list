@@ -5,7 +5,7 @@ const ReviseCancelButton = props => {
   return (
     <ButtonNormal
       onClick={() => {
-        props.callback();
+        props.cancelRevision();
       }}
       className="modify-card-cancel-button-section"
     >

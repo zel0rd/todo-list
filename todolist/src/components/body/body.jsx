@@ -19,6 +19,7 @@ const Body = () => {
   const [card, setCard] = useState({});
   const [deleteCardStatus, setDeleteCardStatus] = useState({});
   const [modalFlag, setModalFlag] = useState(false);
+  const [clickedCard, setclickedCard] = useState({});
 
   const handleModalFlag = () => {
     if (modalFlag === false) {
@@ -26,6 +27,13 @@ const Body = () => {
     } else {
       setModalFlag(false);
     }
+  };
+
+  const getCardData = ({ cardid, id }) => {
+    setclickedCard({
+      columnId: id,
+      cardId: cardid,
+    });
   };
 
   const handleButtonFlag = ({ target: { value } }) => {
@@ -89,11 +97,33 @@ const Body = () => {
     getColumnData();
   };
 
-  const handleChangeTItle = ({ target: { value } }) => {
+  const handleChangeTitle = ({ target: { value } }) => {
     setCard({ ...card, cardTitle: value });
   };
   const handleChangeContents = ({ target: { value } }) => {
     setCard({ ...card, cardContents: value });
+  };
+
+  const handleModifiedCard = (e, object) => {
+    const modifiedData = e.target.value;
+    const currentCard = columnData[clickedCard.columnId - 1].cards;
+    currentCard.map((card) => {
+      if (card.cardid === clickedCard.cardId) {
+        object === "title"
+          ? (card.cardTitle = modifiedData)
+          : (card.cardContents = modifiedData);
+      }
+    });
+    setCard(currentCard);
+  };
+
+  const patchModifiedData = () => {
+    const url = `http://localhost:3002/column/${clickedCard.columnId}`;
+    let data = {
+      cards: card,
+    };
+    patchData(url, data);
+    getColumnData();
   };
 
   const handleAddButtonClick = ({ target: { id } }) => {
@@ -169,9 +199,12 @@ const Body = () => {
               handleModalFlag={handleModalFlag}
               handleAddButtonClick={handleAddButtonClick}
               handleButtonFlag={handleButtonFlag}
-              handleChangeTItle={handleChangeTItle}
+              handleChangeTitle={handleChangeTitle}
               handleChangeContents={handleChangeContents}
               getColumnData={getColumnData}
+              handleModifiedCard={handleModifiedCard}
+              getCardData={getCardData}
+              patchModifiedData={patchModifiedData}
             />
           </BodyStyle>
         ))
