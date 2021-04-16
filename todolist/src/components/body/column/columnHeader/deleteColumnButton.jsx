@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { ReactComponent as deleteColumnBtn } from '../../../style/deleteIcon.svg';
+import React from "react";
+import styled from "styled-components";
+import { ReactComponent as deleteColumnBtn } from "../../../style/deleteIcon.svg";
 
 const DeleteColumnBtn = styled(deleteColumnBtn)`
   width: 13.79px;
@@ -22,10 +22,10 @@ const DeleteColumnBtn = styled(deleteColumnBtn)`
     }
 `;
 
-const DeleteColumnButton = () => {
+const DeleteColumnButton = (props) => {
   return (
-    <div className="delete-column-button-section">
-      <DeleteColumnBtn className="delete-column-button" />
+    <div id={props.id} onClick={props.deleteColumn}>
+      <DeleteColumnBtn />
     </div>
   );
 };
