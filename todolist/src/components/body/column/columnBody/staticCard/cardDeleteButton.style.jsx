@@ -17,4 +17,4 @@ const CardDeleteBtn = styled(cardDeleteBtn)`
     }
 `;
 
-export default CardDeleteBtn;
+export { CardDeleteBtn };

@@ -1,13 +1,20 @@
 import React from "react";
-import CardDeleteBtn from "./cardDeleteButton.style.jsx";
+import { CardDeleteBtn } from "./cardDeleteButton.style.jsx";
 
-const CardDeleteButton = ({ handleDeleteButtonFlag, handleModalFlag }) => {
+const CardDeleteButton = (props) => {
   return (
-    <CardDeleteBtn
-      onMouseEnter={handleDeleteButtonFlag}
-      onMouseLeave={handleDeleteButtonFlag}
-      onClick={handleModalFlag}
-    />
+    <div
+      id={props.columnid}
+      className={props.cardid}
+      onMouseEnter={props.handleDeleteButtonFlag}
+      onMouseLeave={props.handleDeleteButtonFlag}
+      onClick={(e) => {
+        props.handleModalFlag();
+        props.deleteCardData(e);
+      }}
+    >
+      <CardDeleteBtn />
+    </div>
   );
 };
 
