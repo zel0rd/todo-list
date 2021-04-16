@@ -33,6 +33,9 @@ const ColumnBody = (props) => {
                 cardid={cardid}
                 cardTitle={cardTitle}
                 cardContents={cardContents}
+                handleModifiedCard={props.handleModifiedCard}
+                getCardData={props.getCardData}
+                patchModifiedData={props.patchModifiedData}
               />
             )
           )

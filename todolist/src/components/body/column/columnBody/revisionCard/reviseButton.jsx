@@ -7,8 +7,8 @@ import {
 const ReviseButton = (props) => {
   return (
     <ButtonAccent
-      onClick={() => {
-        props.postModifiedData();
+      onClick={(e) => {
+        props.registerRevision(e);
       }}
       className="revise-card-cancel-button-section"
     >
