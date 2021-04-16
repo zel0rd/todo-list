@@ -7,6 +7,7 @@ import {
   getData,
   patchData,
   postData,
+  deleteData,
   getRandomUser,
 } from "../../utils/axios.js";
 import { InitialBodyRenderDiv, BodyStyle } from "./body.style";
@@ -20,6 +21,16 @@ const Body = () => {
   const [deleteCardStatus, setDeleteCardStatus] = useState({});
   const [modalFlag, setModalFlag] = useState(false);
   const [clickedCard, setclickedCard] = useState({});
+
+  const deleteColumn = ({ target: { parentNode } }) => {
+    let columnId;
+    parentNode.id === ""
+      ? (columnId = parentNode.parentNode.id)
+      : (columnId = parentNode.id);
+    const url = `http://localhost:3002/column/${columnId}`;
+    deleteData(url);
+    getColumnData();
+  };
 
   const handleModalFlag = () => {
     if (modalFlag === false) {
@@ -69,10 +80,17 @@ const Body = () => {
   };
 
   const deleteCardData = ({ target: { parentNode } }) => {
-    setDeleteCardStatus({
-      columnid: parentNode.id,
-      cardid: parentNode.className,
-    });
+    let deleteCardObj;
+    parentNode.tagName === "svg"
+      ? (deleteCardObj = {
+          columnid: parentNode.parentNode.id,
+          cardid: parentNode.parentNode.className,
+        })
+      : (deleteCardObj = {
+          columnid: parentNode.id,
+          cardid: parentNode.className,
+        });
+    setDeleteCardStatus(deleteCardObj);
   };
 
   const handleModalDeleteButton = () => {
@@ -126,10 +144,14 @@ const Body = () => {
     getColumnData();
   };
 
-  const handleAddButtonClick = ({ target: { id } }) => {
+  const handleAddButtonClick = ({ target }) => {
+    let columnId;
+    target.id === ""
+      ? (columnId = target.parentNode.id)
+      : (columnId = target.id);
     let newData = columnData;
     newData.forEach((v) => {
-      if (v.id === Number(id)) {
+      if (v.id === Number(columnId)) {
         if (v.modifyCardFlag === true) {
           v.modifyCardFlag = false;
         } else {
@@ -186,6 +208,7 @@ const Body = () => {
               columnTitle={columnTitle}
               cards={cards}
               handleAddButtonClick={handleAddButtonClick}
+              deleteColumn={deleteColumn}
             />
             <ColumnBody
               id={id}

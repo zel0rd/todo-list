@@ -14,7 +14,7 @@
   ],
   "column": [
     {
-      "columnTitle": "해야하는 일",
+      "columnTitle": "해야되는 일",
       "cards": [],
       "id": 1
     },
@@ -29,5 +29,22 @@
       "id": 3
     }
   ],
-  "log": []
+  "log": [
+    {
+      "user": "Swing",
+      "columnTitle": "해야되는 일",
+      "cardTitle": "ㄹㅇㅂㅈ",
+      "action": "추가",
+      "time": "2021-04-16T05:09:42.616Z",
+      "id": 1
+    },
+    {
+      "user": "Swing",
+      "columnTitle": "해야되는 일",
+      "cardTitle": "ㄹㅇㅂㅈ",
+      "action": "삭제",
+      "time": "2021-04-16T05:09:58.551Z",
+      "id": 2
+    }
+  ]
 }
