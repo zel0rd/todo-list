@@ -55,25 +55,13 @@ const Body = () => {
     }
   };
 
-  const postLogData = (id, newCards) => {
-    const logUrl = `http://localhost:3002/log/`;
-    let data = {
-      user: user,
-      columnTitle: columnData[id - 1].columnTitle,
-      cardTitle: newCards[0].cardTitle,
-      action: "추가",
-      time: new Date(),
-    };
-    postData(logUrl, data);
-  };
-
-  const deleteLogData = ({ id, cardid, newCards }) => {
+  const patchLogData = ({ id, cardid, newCards, action }) => {
     const logUrl = `http://localhost:3002/log/`;
     let data = {
       user: user,
       columnTitle: columnData[id - 1].columnTitle,
       cardTitle: newCards[cardid].cardTitle,
-      action: "삭제",
+      action: action,
       time: new Date(),
     };
     postData(logUrl, data);
@@ -96,10 +84,11 @@ const Body = () => {
   const handleModalDeleteButton = () => {
     const url = `http://localhost:3002/column/${deleteCardStatus.columnid}`;
     const newCards = [...columnData[deleteCardStatus.columnid - 1].cards];
-    deleteLogData({
+    patchLogData({
       id: deleteCardStatus.columnid,
       cardid: deleteCardStatus.cardid,
       newCards: newCards,
+      action: "삭제",
     });
     newCards.splice(deleteCardStatus.cardid, 1);
     patchData(url, { cards: newCards });
@@ -111,7 +100,12 @@ const Body = () => {
     let newCards = [...columnData[id - 1].cards];
     newCards.unshift(card);
     patchData(url, { cards: newCards });
-    postLogData(id, newCards);
+    patchLogData({
+      id: id,
+      cardid: 0,
+      newCards: newCards,
+      action: "추가",
+    });
     getColumnData();
   };
 
@@ -142,6 +136,12 @@ const Body = () => {
     };
     patchData(url, data);
     getColumnData();
+    patchLogData({
+      id: clickedCard.columnId,
+      cardid: clickedCard.cardId,
+      newCards: card,
+      action: "수정",
+    });
   };
 
   const handleAddButtonClick = ({ target }) => {
