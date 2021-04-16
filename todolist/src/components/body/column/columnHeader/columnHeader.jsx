@@ -3,22 +3,21 @@ import ColumnTitle from "./columnTitle.jsx";
 import CountCards from "./countCards.jsx";
 import AddCardButton from "./addCardButton.jsx";
 import DeleteColumnButton from "./deleteColumnButton.jsx";
-import ColumnHeaderSection from "./columnHeaderSection.style.jsx";
-import ColumnTitleWrapper from "./ColumnTitleWrapper.style";
+import { ColumnTitleDiv, ColumnHeaderSpan } from "./columnHeader.style.jsx";
 
 const ColumnHeader = (props) => {
   return (
-    <ColumnHeaderSection className="column-header-section">
-      <ColumnTitleWrapper>
+    <ColumnHeaderSpan>
+      <ColumnTitleDiv>
         <ColumnTitle columnTitle={props.columnTitle} />
         <CountCards cardsNumber={props.cards.length} />
-      </ColumnTitleWrapper>
+      </ColumnTitleDiv>
       <AddCardButton
         id={props.id}
         handleAddButtonClick={props.handleAddButtonClick}
       />
       <DeleteColumnButton id={props.id} deleteColumn={props.deleteColumn} />
-    </ColumnHeaderSection>
+    </ColumnHeaderSpan>
   );
 };
 

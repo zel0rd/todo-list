@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { ReactComponent as addIcon } from '../../style/addIcon.svg';
+import styled from "styled-components";
+import { ReactComponent as addIcon } from "../../icons/addIcon.svg";
 
 const AddIcon = styled(addIcon)`
   width: 22.98px;
@@ -27,13 +27,13 @@ const Button = styled.div`
   bottom: 5%;
   right: 5%;
 
-  z-index:1;
-
+  z-index: 1;
 
   background: #0075de;
   cursor: pointer;
 
-  box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5), 0px 2px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
+    0px 2px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
   border-radius: 35px;
 `;

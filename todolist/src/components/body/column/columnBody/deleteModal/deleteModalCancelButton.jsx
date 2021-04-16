@@ -2,7 +2,7 @@ import React from "react";
 import {
   ButtonNormal,
   ButtonNormalText,
-} from "../../../../style/button-normal.jsx";
+} from "../../../../icons/button-normal.jsx";
 
 const DeleteModalCancelButton = ({ handleModalFlag }) => {
   return (

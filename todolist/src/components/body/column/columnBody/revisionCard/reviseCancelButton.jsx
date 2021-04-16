@@ -1,7 +1,10 @@
-import React from 'react';
-import { ButtonNormal, ButtonNormalText } from '../../../../style/button-normal.jsx';
+import React from "react";
+import {
+  ButtonNormal,
+  ButtonNormalText,
+} from "../../../../icons/button-normal.jsx";
 
-const ReviseCancelButton = props => {
+const ReviseCancelButton = (props) => {
   return (
     <ButtonNormal
       onClick={() => {
@@ -9,7 +12,9 @@ const ReviseCancelButton = props => {
       }}
       className="modify-card-cancel-button-section"
     >
-      <ButtonNormalText className="modify-card-cancel-button">취소</ButtonNormalText>
+      <ButtonNormalText className="modify-card-cancel-button">
+        취소
+      </ButtonNormalText>
     </ButtonNormal>
   );
 };

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as cardDeleteBtn } from "../../../../style/deleteIcon.svg";
+import { ReactComponent as cardDeleteBtn } from "../../../../icons/deleteIcon.svg";
 
 const CardDeleteBtn = styled(cardDeleteBtn)`
   width: 13.79px;

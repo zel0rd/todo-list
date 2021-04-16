@@ -1,13 +1,12 @@
 import React from "react";
-import LogHideButtonStyle from "./logHideButton.style";
-import { ReactComponent as HideBtn } from "../../style/deleteIcon.svg";
-// import styled from 'styled-components';
+import { LogHideButtonDiv } from "./logHeader.style.jsx";
+import { ReactComponent as HideBtn } from "../../icons/deleteIcon.svg";
 
 const LogHideButton = ({ handleLogRender }) => {
   return (
-    <LogHideButtonStyle className="log-hide-button-section">
-      <HideBtn className="log-hide-button" onClick={handleLogRender} />
-    </LogHideButtonStyle>
+    <LogHideButtonDiv>
+      <HideBtn onClick={handleLogRender} />
+    </LogHideButtonDiv>
   );
 };
 

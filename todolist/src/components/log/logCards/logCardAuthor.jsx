@@ -1,12 +1,8 @@
-import React from 'react';
-import LogCardAuthorStyle from './logCardAuthor.style';
+import React from "react";
+import { LogCardAuthorDiv } from "./logCards.style.jsx";
 
 const LogCardAuthor = ({ user }) => {
-  return (
-    <LogCardAuthorStyle className="log-card-author-section">
-      <span className="log-card-author">@{user}</span>
-    </LogCardAuthorStyle>
-  );
+  return <LogCardAuthorDiv>@{user}</LogCardAuthorDiv>;
 };
 
 export default LogCardAuthor;
