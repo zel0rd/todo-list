@@ -1,14 +1,8 @@
 import React from "react";
-import ColumnTitleStyle from "./columnTitle.style";
+import { ColumnTitleSpan } from "./columnHeader.style.jsx";
 
 const ColumnTitle = ({ columnTitle }) => {
-  return (
-    <div className="column-title-section">
-      <ColumnTitleStyle className="column-title">
-        {columnTitle}
-      </ColumnTitleStyle>
-    </div>
-  );
+  return <ColumnTitleSpan>{columnTitle}</ColumnTitleSpan>;
 };
 
 export default ColumnTitle;

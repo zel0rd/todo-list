@@ -3,7 +3,7 @@ import CardTitle from "./cardTitle.jsx";
 import CardContents from "./cardContents.jsx";
 import CardAuthor from "./cardAuthor.jsx";
 import CardDeleteButton from "./cardDeleteButton.jsx";
-import StaticCardStyle from "./staticCard.style";
+import { StaticCardDiv } from "./staticCard.style.jsx";
 import CardTextWrapper from "./cardTextWrapper.style";
 import ReviseCard from "../revisionCard/reviseCard";
 
@@ -85,7 +85,7 @@ const StaticCard = (props) => {
   };
 
   return (
-    <StaticCardStyle
+    <StaticCardDiv
       cardStyle={cardStyle}
       onDoubleClick={() => {
         handleModifyFlag(true);
@@ -104,7 +104,7 @@ const StaticCard = (props) => {
         handleModifiedCard={props.handleModifiedCard}
         patchModifiedData={props.patchModifiedData}
       />
-    </StaticCardStyle>
+    </StaticCardDiv>
   );
 };
 

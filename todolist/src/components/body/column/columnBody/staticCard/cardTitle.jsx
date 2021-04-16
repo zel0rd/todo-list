@@ -1,12 +1,8 @@
-import React from 'react';
-import CardTitleStyle from './cardTitle.style';
+import React from "react";
+import { CardTitleDiv } from "./staticCard.style.jsx";
 
 const CardTitle = ({ cardTitle }) => {
-  return (
-    <div className="card-title-section">
-      <CardTitleStyle className="card-title">{cardTitle}</CardTitleStyle>
-    </div>
-  );
+  return <CardTitleDiv>{cardTitle}</CardTitleDiv>;
 };
 
 export default CardTitle;

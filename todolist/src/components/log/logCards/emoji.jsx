@@ -1,14 +1,8 @@
-import React from 'react';
-import EmojiStyle from './emoji.style';
+import React from "react";
+import { EmojiDiv } from "./logCards.style.jsx";
 
 const Emoji = ({ emoji }) => {
-  return (
-    <div className="emoji-section">
-      <EmojiStyle className="emoji">
-        {emoji}
-      </EmojiStyle>
-    </div>
-  );
+  return <EmojiDiv className="emoji">{emoji}</EmojiDiv>;
 };
 
 export default Emoji;

@@ -1,10 +1,10 @@
-import React from 'react';
-import Title from './headerTitle.style';
+import React from "react";
+import { HeaderTitleSpan } from "./header.style.jsx";
 
 const HeaderTitle = () => {
   return (
     <div className="header-title-section">
-      <Title className="header-title">TO-DO-List</Title>
+      <HeaderTitleSpan className="header-title">TO-DO-List</HeaderTitleSpan>
     </div>
   );
 };

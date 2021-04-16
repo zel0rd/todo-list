@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StaticCardStyle = styled.div`
+const StaticCardDiv = styled.div`
   display: flex;
   align-items: flex-start;
   padding: 16px;
@@ -20,4 +20,17 @@ const StaticCardStyle = styled.div`
   }
 `;
 
-export default StaticCardStyle;
+const CardTitleDiv = styled.div`
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 23px;
+
+  width: 252px;
+  height: auto;
+
+  color: #010101;
+
+  margin: 8px 0px;
+`;
+
+export { StaticCardDiv, CardTitleDiv };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "./components/header/header.jsx";
 import Body from "./components/body/body.jsx";
 import Log from "./components/log/log.jsx";
-import "./styles/style.scss";
+import "./styles/styles.scss";
 
 const App = () => {
   const [logRenderFlag, setlogRenderFlag] = useState(false);

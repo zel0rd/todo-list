@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as addCardBtn } from "../../../style/addIcon.svg";
+import { ReactComponent as addCardBtn } from "../../../icons/addIcon.svg";
 
 const AddCardBtn = styled(addCardBtn)`
   width: 13.79px;

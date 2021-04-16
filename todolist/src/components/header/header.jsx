@@ -1,15 +1,15 @@
 import React from "react";
 import HeaderTitle from "./headerTitle.jsx";
 import ShowLogButton from "./showLogButton.jsx";
-import styles from "./header.module.css";
+import { HeaderContainer } from "./header.style.jsx";
 
 const Header = ({ handleLogRender }) => {
   return (
     <section className="header">
-      <div className={styles.headerContainer}>
+      <HeaderContainer>
         <HeaderTitle />
         <ShowLogButton handleLogRender={handleLogRender} />
-      </div>
+      </HeaderContainer>
     </section>
   );
 };

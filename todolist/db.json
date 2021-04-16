@@ -14,13 +14,18 @@
   ],
   "column": [
     {
-      "columnTitle": "해야되는 일",
+      "columnTitle": "해야할 일",
       "cards": [],
       "id": 1
     },
     {
       "columnTitle": "하고있는 일",
-      "cards": [],
+      "cards": [
+        {
+          "cardTitle": "gre",
+          "cardContents": "gre"
+        }
+      ],
       "id": 2
     },
     {
@@ -31,20 +36,12 @@
   ],
   "log": [
     {
-      "user": "Swing",
-      "columnTitle": "해야되는 일",
-      "cardTitle": "ㄹㅇㅂㅈ",
+      "user": "Eamon",
+      "columnTitle": "하고있는 일",
+      "cardTitle": "gre",
       "action": "추가",
-      "time": "2021-04-16T05:09:42.616Z",
+      "time": "2021-04-16T05:59:08.360Z",
       "id": 1
-    },
-    {
-      "user": "Swing",
-      "columnTitle": "해야되는 일",
-      "cardTitle": "ㄹㅇㅂㅈ",
-      "action": "삭제",
-      "time": "2021-04-16T05:09:58.551Z",
-      "id": 2
     }
   ]
 }

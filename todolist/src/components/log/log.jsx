@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import LogHeader from './logHeader/logHeader.jsx';
-import LogCards from './logCards/logCards.jsx';
-import { getData } from '../../utils/axios.js';
-import LogStyle from './log.style';
-import LogCardsWrapper from './logCardsWrapper.style';
+import React, { useState, useEffect } from "react";
+import LogHeader from "./logHeader/logHeader.jsx";
+import LogCards from "./logCards/logCards.jsx";
+import { getData } from "../../utils/axios.js";
+import { LogDiv, LogContentsDiv } from "./log.style.jsx";
 
-const Log = ( { handleLogRender }) => {
+const Log = ({ handleLogRender }) => {
   const [logCards, setLogCards] = useState([]);
   const reversedLogCards = logCards.reverse();
   const getLogData = () => {
@@ -18,14 +17,14 @@ const Log = ( { handleLogRender }) => {
   }, []);
 
   return (
-    <LogStyle className="log">
-      <LogHeader handleLogRender={ handleLogRender } />
-        <LogCardsWrapper>
+    <LogDiv className="log">
+      <LogHeader handleLogRender={handleLogRender} />
+      <LogContentsDiv>
         {reversedLogCards.map((logData, index) => (
           <LogCards key={index} logData={logData} />
         ))}
-        </LogCardsWrapper>
-    </LogStyle>
+      </LogContentsDiv>
+    </LogDiv>
   );
 };
 

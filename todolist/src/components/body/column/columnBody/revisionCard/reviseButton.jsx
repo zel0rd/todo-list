@@ -2,7 +2,7 @@ import React from "react";
 import {
   ButtonAccent,
   ButtonAccentText,
-} from "../../../../style/button-accent.jsx";
+} from "../../../../icons/button-accent.jsx";
 
 const ReviseButton = (props) => {
   return (
